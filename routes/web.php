@@ -26,7 +26,7 @@ Route::post('/login_with_email', 'Auth\LoginController@loginWithEmail')->name('l
 //         'middleware' => ['auth'],
 //     ],
 //     function () {
-//         Route::post('/change_password', 'Admin\Profile\ProfileController@change_password')->name('change_password');
+//         Route::post('/change_password', 'ProfileController@change_password')->name('change_password');
 //     }
 // );
 
