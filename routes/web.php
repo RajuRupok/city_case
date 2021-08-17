@@ -21,14 +21,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/login_with_email', 'Auth\LoginController@loginWithEmail')->name('login_with_email');
 
-// Route::group(
-//     [
-//         'middleware' => ['auth'],
-//     ],
-//     function () {
-//         Route::post('/change_password', 'ProfileController@change_password')->name('change_password');
-//     }
-// );
+Route::group(
+    [
+        'middleware' => ['auth'],
+    ],
+    function () {
+        Route::post('/change_password', 'ProfileController@change_password')->name('change_password');
+    }
+);
 
 /*==============================================================
 ======================< city_corporation Routes >==========================
