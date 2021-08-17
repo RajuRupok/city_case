@@ -15,6 +15,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('role', ['city_corporation', 'service_manager', 'support_staff', 'citizen'])->default('citizen');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
+
+            $table->string('nid', 15)->unique();
+            $table->text('address');
+            $table->string('mobile');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
