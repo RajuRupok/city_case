@@ -1,0 +1,5 @@
+@import url("variables.css");
+
+.navbar .getstarted.login-btn:focus {
+    padding: 10px -1px 10px 30px;
+}
