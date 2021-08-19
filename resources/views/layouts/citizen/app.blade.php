@@ -5,9 +5,11 @@
     </head>
     <body class="main-body">
         @include('layouts.citizen.partials.navbar')
-
+        
         <main id="main">
             @yield('content')
+
+            @include('layouts.citizen.partials.footer')
         </main>
 
         @include('layouts.citizen.partials.script')

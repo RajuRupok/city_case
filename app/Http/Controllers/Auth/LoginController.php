@@ -46,7 +46,7 @@ class LoginController extends Controller
             $this->redirectTo = route('support_staff.dashboard.index');
 
         } else {
-            $this->redirectTo = route('citizen.dashboard.index');
+            $this->redirectTo = route('citizen.profile.index');
         }
         $this->middleware('guest')->except('logout');
 
@@ -68,7 +68,7 @@ class LoginController extends Controller
             $redirectTo = route('support_staff.dashboard.index');
 
         } else {
-            $redirectTo = route('citizen.dashboard.index');
+            $redirectTo = route('citizen.profile.index');
         }
 
         $this->middleware('guest')->except('logout');

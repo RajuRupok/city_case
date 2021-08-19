@@ -22,7 +22,7 @@
                 <h2 data-aos="fade-up" data-aos-delay="400">{{ __('Assign your area problems and we here to solve those.') }}</h2>
                 <div data-aos="fade-up" data-aos-delay="800">
                     @auth
-                        <a href="#" class="btn-get-started text-bold">{{ __('Assign Case') }}</a>
+                        <a href="{{ route('citizen.case.create') }}" class="btn-get-started text-bold">{{ __('Assign Case') }}</a>
                     @else
                         <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#loginToCCM" class="btn-get-started text-bold">{{ __('Assign Case') }}</a>
                     @endauth

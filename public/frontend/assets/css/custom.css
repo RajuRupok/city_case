@@ -12,6 +12,12 @@
 .navbar .active, .navbar .active:focus > a {
     font-weight: 700;
 }
+.navbar .dropdown.active > a > span {
+    font-weight: 700;
+}
+.navbar .dropdown.active ul > li > a.active {
+    font-weight: 700;
+}
 
 input.form-control {
     border-radius: 0px;

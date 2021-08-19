@@ -33,6 +33,10 @@
                 </div>
 
                 <div class="modal-footer">
+                    <p class="text-dark">
+                        Don't Have Account? 
+                        <a href="{{ route('register') }}" class="text-bold">Register</a>
+                    </p>
                     <button type="submit" class="btn btn-dark btn-custom">{{ __('LOGIN') }}</button>
                 </div>
             </div>

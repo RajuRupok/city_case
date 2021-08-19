@@ -90,7 +90,10 @@ Route::group(
         'middleware' => ['web'],
     ],
     function () {
-        Route::get('/', 'HomeController@index')->name('homepage');
+        Route::get('/', 'HomeController@homepage')->name('homepage');
+        Route::get('/about', 'HomeController@about')->name('about');
+        Route::get('/service', 'HomeController@service')->name('service');
+        Route::get('/contact', 'HomeController@contact')->name('contact');
     }
 );
 
