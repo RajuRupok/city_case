@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,13 +14,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/login_with_email', 'Auth\LoginController@loginWithEmail')->name('login_with_email');
 
@@ -75,6 +78,19 @@ Route::group(
     ],
     function () {
         include_once 'citizen/citizen.php';
+    }
+);
+
+
+/*==============================================================
+======================< Guest Routes >==========================
+==============================================================*/
+Route::group(
+    [
+        'middleware' => ['web'],
+    ],
+    function () {
+        Route::get('/', 'HomeController@index')->name('homepage');
     }
 );
 

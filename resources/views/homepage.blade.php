@@ -21,7 +21,11 @@
                 <h1 data-aos="fade-up">{{ __('City Case Managerment') }}</h1>
                 <h2 data-aos="fade-up" data-aos-delay="400">{{ __('Assign your area problems and we here to solve those.') }}</h2>
                 <div data-aos="fade-up" data-aos-delay="800">
-                    <a href="#" class="btn-get-started scrollto">{{ __('Assign Case') }}</a>
+                    @auth
+                        <a href="#" class="btn-get-started text-bold">{{ __('Assign Case') }}</a>
+                    @else
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#loginToCCM" class="btn-get-started text-bold">{{ __('Assign Case') }}</a>
+                    @endauth
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img text-center" data-aos="fade-left" data-aos-delay="200">

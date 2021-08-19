@@ -1,0 +1,29 @@
+.btn-custom {
+    padding: 10px 30px !important;
+    color: #fff !important;
+    background: var(--primaryColor);
+    border: 0px solid var(--primaryColor);
+    border-radius: 50px !important;
+    outline: none !important;
+}
+.btn-custom:hover {
+    background: var(--primaryColorLight);
+}
+.btn-custom:focus,
+.btn-custom:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.mt-0 {
+    margin-top: 0px !important;
+}
+.mb-0 {
+    margin-bottom: 0px !important;
+}
+.ml-0 {
+    margin-left: 0px !important;
+}
+.mr-0 {
+    margin-right: 0px !important;
+}

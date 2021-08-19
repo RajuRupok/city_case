@@ -4,7 +4,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 {{--  Page Title  --}}
 <title> City Case Management || @yield('page_title') </title>
-{{-- <link rel="shortcut icon" href="{{ asset('frontend/images/icon.png') }}" type="image/x-icon"> --}}
+<link rel="shortcut icon" href="{{ asset('frontend/assets/img/favicon.svg') }}" type="image/x-icon">
 
 <meta name="keywords" content="Veechi Technologies" />
 <meta name="description" content="Veechi Technologies">

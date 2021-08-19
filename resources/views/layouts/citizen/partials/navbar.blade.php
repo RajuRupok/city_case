@@ -2,22 +2,24 @@
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
         <div class="logo">
-            <h1><a href="index.html">Vesperr</a></h1>
+            {{-- <h1><a href="/">CCM</a></h1> --}}
             <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <a href="/">
+                <img src="{{ asset('frontend/assets/img/CCM_Logo.svg') }}" alt="" class="img-fluid">
+            </a>
         </div>
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link active" href="/">Home</a></li>
-                <li><a class="nav-link" href="#">About</a></li>
-                <li><a class="nav-link" href="#">Services</a></li>
-                <li><a class="nav-link" href="#">Contact</a></li>
+                <li><a class="nav-link {{ Route::is('homepage') ? 'active' : '' }}" href="/">{{ __('Home') }}</a></li>
+                <li><a class="nav-link" href="#">{{ __('About') }}</a></li>
+                <li><a class="nav-link" href="#">{{ __('Services') }}</a></li>
+                <li><a class="nav-link" href="#">{{ __('Contact') }}</a></li>
 
                 @guest
-                    <li>
-                        <a class="getstarted login-btn" href="{{ route('login') }}">
-                            {{ __('Login') }}
+                    <li style="margin-left: 15px;">
+                        <a class="btn btn-dark btn-custom text-bold" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#loginToCCM">
+                            {{ __('LOGIN') }}
                         </a>
                     </li>
                 @else
@@ -46,4 +48,5 @@
         <!-- .navbar -->
     </div>
 </header>
+@include('auth.login')
 <!-- End Header -->

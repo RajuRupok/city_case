@@ -1293,8 +1293,8 @@ section {
 }
 
 .pricing .recommended .btn-buy:hover {
-  background: #2383c4;
-  border-color: #2383c4;
+  background: var(--primaryColorLight);
+  border-color: var(--primaryColorLight);
 }
 
 /*--------------------------------------------------------------
@@ -1456,7 +1456,7 @@ section {
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-  background: #2383c4;
+  background: var(--primaryColorLight);
 }
 
 @-webkit-keyframes animate-loading {

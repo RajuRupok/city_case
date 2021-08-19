@@ -1,5 +1,26 @@
 @import url("variables.css");
+@import url("custom.class.css");
 
-.navbar .getstarted.login-btn:focus {
-    padding: 10px -1px 10px 30px;
+* {
+    outline: none !important;
+}
+
+.text-bold {
+    font-weight: bold !important;
+}
+
+.navbar .active, .navbar .active:focus > a {
+    font-weight: 700;
+}
+
+input.form-control {
+    border-radius: 0px;
+    margin-bottom: 15px;
+    border-color: var(--primaryColorLight);
+}
+
+input.form-control:focus {
+    outline: none;
+    box-shadow: none !important;
+    border-color: var(--primaryColor);
 }
