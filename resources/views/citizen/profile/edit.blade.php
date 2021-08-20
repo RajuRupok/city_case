@@ -9,7 +9,14 @@
 
 @section('stylesheet')
     {{--  External CSS  --}}
-
+    <style>
+        textarea {
+            outline: none !important;
+            box-shadow: none !important;
+            border-radius: 0px !important;
+            border: 1px solid var(--primaryColor) !important;
+        }
+    </style>
 @endsection
 
 @section('content')
