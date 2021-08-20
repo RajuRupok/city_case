@@ -47,4 +47,28 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Category', 'category_id', 'id');
     }
+
+    //relation with cases many to one relationship
+    public function caseCitizens()
+    {
+        return $this->hasMany('App\CityCase', 'citizen_id', 'id');
+    }
+
+    //relation with support_staff many to one relationship
+    public function caseSupportStaffs()
+    {
+        return $this->hasMany('App\CityCase', 'support_staff_id', 'id');
+    }
+
+    //relation with caseCategories many to one relationship
+    public function caseCategories()
+    {
+        return $this->hasMany('App\CityCase', 'category_id', 'id');
+    }
+
+    //relation with review many to one relationship
+    public function review()
+    {
+        return $this->hasOne('App\Review', 'reviewer_id', 'id');
+    }
 }
