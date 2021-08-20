@@ -54,7 +54,7 @@ class SupportStaffController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::whereStatus('active')->get();
         return view('city_corporation.support_staff.create', compact(['categories']));
     }
 

@@ -139,26 +139,26 @@
             <li class="menu-header">Settings</li>
 
             {{-- Categories Starts --}}
-            <li class="dropdown {{ Request::is('city_corporation/gategory*') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('city_corporation/gategory*') ? 'toggled' : '' }}">
-                    <i data-feather="hash"></i>
+            <li class="dropdown {{ Request::is('city_corporation/category*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('city_corporation/category*') ? 'toggled' : '' }}">
+                    <i data-feather="settings"></i>
                     <span>Categories</span>
                 </a>
-                <ul class="dropdown-menu {{ Request::is('city_corporation/gategory/all*') ? 'd-block' : '' }}">
-                    <li class="{{ Request::is('city_corporation/gategory/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Categories</a>
+                <ul class="dropdown-menu {{ Request::is('city_corporation/category/all*') ? 'd-block' : '' }}">
+                    <li class="{{ Request::is('city_corporation/category/all*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('city_corporation.category.index') }}">All Categories</a>
                     </li>
 
-                    <li class="{{ Request::is('city_corporation/gategory/approved*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Active</a>
+                    <li class="{{ Request::is('city_corporation/category/active*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('city_corporation.category.active') }}">Active</a>
                     </li>
 
-                    <li class="{{ Request::is('city_corporation/gategory/banned*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Inactive</a>
+                    <li class="{{ Request::is('city_corporation/category/inactive*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('city_corporation.category.inactive') }}">Inactive</a>
                     </li>
 
-                    <li class="{{ Request::is('city_corporation/gategory/create*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Create New</a>
+                    <li class="{{ Request::is('city_corporation/category/create*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('city_corporation.category.create') }}">Create New</a>
                     </li>
                 </ul>
             </li>

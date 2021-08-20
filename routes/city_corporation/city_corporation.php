@@ -15,5 +15,8 @@ Route::group([
         
         // support_staff
         include_once 'support_staff/support_staff.php';
+        
+        // category
+        include_once 'category/category.php';
     }
 );
