@@ -16,8 +16,8 @@
             {{-- <li class="menu-header">Main</li> --}}
 
             {{-- Dashboard Start --}}
-            <li class="{{ Request::is('city_corporation') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('city_corporation.dashboard.index') }}">
+            <li class="{{ Request::is('support_staff') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('support_staff.dashboard.index') }}">
                     <i data-feather="airplay"></i>
                     <span>Dashboard</span>
                 </a>
@@ -27,114 +27,30 @@
             {{-- <li class="menu-header">Case</li> --}}
 
             {{-- Cases Starts --}}
-            <li class="dropdown {{ Request::is('city_corporation/case*') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('city_corporation/case*') ? 'toggled' : '' }}">
+            <li class="dropdown {{ Request::is('support_staff/case*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('support_staff/case*') ? 'toggled' : '' }}">
                     <i data-feather="hash"></i>
                     <span>Cases</span>
                 </a>
-                <ul class="dropdown-menu {{ Request::is('city_corporation/case/all*') ? 'd-block' : '' }}">
-                    <li class="{{ Request::is('city_corporation/case/all*') ? 'active' : '' }}">
+                <ul class="dropdown-menu {{ Request::is('support_staff/case/all*') ? 'd-block' : '' }}">
+                    <li class="{{ Request::is('support_staff/case/all*') ? 'active' : '' }}">
                         <a class="nav-link" href="#">All Cases</a>
                     </li>
-
-                    <li class="{{ Request::is('city_corporation/case/pending*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Pending</a>
+                    
+                    <li class="{{ Request::is('support_staff/case/new_assigned*') ? 'active' : '' }}">
+                        <a class="nav-link" href="#">New Assigned Cases</a>
                     </li>
 
-                    <li class="{{ Request::is('city_corporation/case/running*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Running</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/case/completed*') ? 'active' : '' }}">
+                    <li class="{{ Request::is('support_staff/case/completed*') ? 'active' : '' }}">
                         <a class="nav-link" href="#">Completed</a>
                     </li>
 
-                    <li class="{{ Request::is('city_corporation/case/canceled*') ? 'active' : '' }}">
+                    <li class="{{ Request::is('support_staff/case/canceled*') ? 'active' : '' }}">
                         <a class="nav-link" href="#">Canceled</a>
                     </li>
                 </ul>
             </li>
             {{-- Cases Ends --}}
-
-            {{-- <li class="menu-header">Service Manager</li> --}}
-
-            {{-- Service Managers Starts --}}
-            <li class="dropdown {{ Request::is('city_corporation/service_manager*') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('city_corporation/service_manager*') ? 'toggled' : '' }}">
-                    <i data-feather="hash"></i>
-                    <span>Service Managers</span>
-                </a>
-                <ul class="dropdown-menu {{ Request::is('city_corporation/service_manager/all*') ? 'd-block' : '' }}">
-                    <li class="{{ Request::is('city_corporation/service_manager/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Service Managers</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/service_manager/active*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Active</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/service_manager/inactive*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Inactive</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/service_manager/create*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Assign New</a>
-                    </li>
-                </ul>
-            </li>
-            {{-- Service Managers Ends --}}
-
-            {{-- <li class="menu-header">Support Staff</li> --}}
-
-            {{-- Support Staffs Starts --}}
-            <li class="dropdown {{ Request::is('city_corporation/support_staff*') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('city_corporation/support_staff*') ? 'toggled' : '' }}">
-                    <i data-feather="hash"></i>
-                    <span>Support Staffs</span>
-                </a>
-                <ul class="dropdown-menu {{ Request::is('city_corporation/support_staff/all*') ? 'd-block' : '' }}">
-                    <li class="{{ Request::is('city_corporation/support_staff/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Support Staffs</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/support_staff/active*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Active</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/support_staff/inactive*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Inactive</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/support_staff/create*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Assign New</a>
-                    </li>
-                </ul>
-            </li>
-            {{-- Support Staffs Ends --}}
-
-            {{-- <li class="menu-header">Citizen</li> --}}
-
-            {{-- Citizens Starts --}}
-            <li class="dropdown {{ Request::is('city_corporation/citizen*') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('city_corporation/citizen*') ? 'toggled' : '' }}">
-                    <i data-feather="hash"></i>
-                    <span>Citizens</span>
-                </a>
-                <ul class="dropdown-menu {{ Request::is('city_corporation/citizen/all*') ? 'd-block' : '' }}">
-                    <li class="{{ Request::is('city_corporation/citizen/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Citizens</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/citizen/approved*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Approved</a>
-                    </li>
-
-                    <li class="{{ Request::is('city_corporation/citizen/banned*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Banned</a>
-                    </li>
-                </ul>
-            </li>
-            {{-- Citizens Ends --}}
         </ul>
     </aside>
 </div>

@@ -7,20 +7,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{--  Page Title  --}}
-    <title> City Corporation | @yield('page_title') </title>
+    <title> Support Staff | @yield('page_title') </title>
 
 
-    @include('layouts.city_corporation.partials.stylesheet')
+    @include('layouts.support_staff.partials.stylesheet')
 </head>
 
 <body>
     <div class="app">
         <div class="main-wrapper main-wrapper-1">
             {{-- Top Nav --}}
-            @include('layouts.city_corporation.partials.topnav')
+            @include('layouts.support_staff.partials.topnav')
 
             {{-- Side Nav --}}
-            @include('layouts.city_corporation.partials.sidenav')
+            @include('layouts.support_staff.partials.sidenav')
 
             {{-- Main Content START --}}
             <div class="main-content">
@@ -34,7 +34,7 @@
 
                 <ul class="breadcrumb breadcrumb-style ">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('city_corporation.dashboard.index') }}"><i class="fas fa-home"></i></a>
+                        <a href="{{ route('support_staff.dashboard.index') }}"><i class="fas fa-home"></i></a>
                     </li>
                     @yield('breadcrumb_section')
                 </ul>
@@ -44,7 +44,7 @@
             {{-- Main Content END --}}
 
             {{-- Footer --}}
-            @include('layouts.city_corporation.partials.footer')
+            @include('layouts.support_staff.partials.footer')
         </div>
     </div>
 
@@ -52,7 +52,7 @@
     @include('sweetalert::alert')
 
 
-    @include('layouts.city_corporation.partials.scripts')
+    @include('layouts.support_staff.partials.scripts')
 
 </body>
 </html>
