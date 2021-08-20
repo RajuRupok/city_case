@@ -66,19 +66,19 @@
                 </a>
                 <ul class="dropdown-menu {{ Request::is('city_corporation/service_manager/all*') ? 'd-block' : '' }}">
                     <li class="{{ Request::is('city_corporation/service_manager/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Service Managers</a>
+                        <a class="nav-link" href="{{ route('city_corporation.service_manager.index') }}">All Service Managers</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/service_manager/active*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Active</a>
+                        <a class="nav-link" href="{{ route('city_corporation.service_manager.active') }}">Active</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/service_manager/inactive*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Inactive</a>
+                        <a class="nav-link" href="{{ route('city_corporation.service_manager.inactive') }}">Inactive</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/service_manager/create*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Assign New</a>
+                        <a class="nav-link" href="{{ route('city_corporation.service_manager.create') }}">Assign New</a>
                     </li>
                 </ul>
             </li>

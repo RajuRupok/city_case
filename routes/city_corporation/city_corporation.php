@@ -13,6 +13,9 @@ Route::group([
         // citizen
         include_once 'citizen/citizen.php';
         
+        // service_manager
+        include_once 'service_manager/service_manager.php';
+        
         // support_staff
         include_once 'support_staff/support_staff.php';
         
