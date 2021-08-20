@@ -94,19 +94,19 @@
                 </a>
                 <ul class="dropdown-menu {{ Request::is('city_corporation/support_staff/all*') ? 'd-block' : '' }}">
                     <li class="{{ Request::is('city_corporation/support_staff/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Support Staffs</a>
+                        <a class="nav-link" href="{{ route('city_corporation.support_staff.index') }}">All Support Staffs</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/support_staff/active*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Active</a>
+                        <a class="nav-link" href="{{ route('city_corporation.support_staff.active') }}">Active</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/support_staff/inactive*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Inactive</a>
+                        <a class="nav-link" href="{{ route('city_corporation.support_staff.inactive') }}">Inactive</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/support_staff/create*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Assign New</a>
+                        <a class="nav-link" href="{{ route('city_corporation.support_staff.create') }}">Assign New</a>
                     </li>
                 </ul>
             </li>
@@ -122,19 +122,47 @@
                 </a>
                 <ul class="dropdown-menu {{ Request::is('city_corporation/citizen/all*') ? 'd-block' : '' }}">
                     <li class="{{ Request::is('city_corporation/citizen/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Citizens</a>
+                        <a class="nav-link" href="{{ route('city_corporation.citizen.index') }}">All Citizens</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/citizen/approved*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Approved</a>
+                        <a class="nav-link" href="{{ route('city_corporation.citizen.approved') }}">Approved</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/citizen/banned*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Banned</a>
+                        <a class="nav-link" href="{{ route('city_corporation.citizen.banned') }}">Banned</a>
                     </li>
                 </ul>
             </li>
             {{-- Citizens Ends --}}
+
+            <li class="menu-header">Settings</li>
+
+            {{-- Categories Starts --}}
+            <li class="dropdown {{ Request::is('city_corporation/gategory*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('city_corporation/gategory*') ? 'toggled' : '' }}">
+                    <i data-feather="hash"></i>
+                    <span>Categories</span>
+                </a>
+                <ul class="dropdown-menu {{ Request::is('city_corporation/gategory/all*') ? 'd-block' : '' }}">
+                    <li class="{{ Request::is('city_corporation/gategory/all*') ? 'active' : '' }}">
+                        <a class="nav-link" href="#">All Categories</a>
+                    </li>
+
+                    <li class="{{ Request::is('city_corporation/gategory/approved*') ? 'active' : '' }}">
+                        <a class="nav-link" href="#">Active</a>
+                    </li>
+
+                    <li class="{{ Request::is('city_corporation/gategory/banned*') ? 'active' : '' }}">
+                        <a class="nav-link" href="#">Inactive</a>
+                    </li>
+
+                    <li class="{{ Request::is('city_corporation/gategory/create*') ? 'active' : '' }}">
+                        <a class="nav-link" href="#">Create New</a>
+                    </li>
+                </ul>
+            </li>
+            {{-- Categories Ends --}}
         </ul>
     </aside>
 </div>

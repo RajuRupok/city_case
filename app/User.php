@@ -36,4 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
+
+
+    // all relation below
+
+    //relation with category many to one relationship
+    public function category()
+    {
+        return $this->belongsTo('App\Category', 'category_id', 'id');
+    }
 }
