@@ -20,17 +20,19 @@ class CreateCityCasesTable extends Migration
             $table->string('title');
             $table->string('location');
             $table->longText('details');
-            $table->timestamp('started_at');
-            $table->timestamp('ended_at');
-
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('ended_at')->nullable();
+            
             $table->unsignedBigInteger('citizen_id');
             $table->foreign('citizen_id')->references('id')->on('users');
-
+            
             $table->unsignedBigInteger('support_staff_id')->nullable();
             $table->foreign('support_staff_id')->references('id')->on('users');
-
+            
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            
+            $table->enum('status', ['pending', 'running', 'completed', 'canceled']);
 
             $table->timestamps();
         });

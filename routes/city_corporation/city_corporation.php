@@ -21,5 +21,8 @@ Route::group([
         
         // category
         include_once 'category/category.php';
+        
+        // case
+        include_once 'case/case.php';
     }
 );

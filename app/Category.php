@@ -14,4 +14,9 @@ class Category extends Model
     public function users(){
         return $this->hasMany('App\User', 'category_id', 'id');
     }
+
+    //relation with cases one to many relationship
+    public function cases(){
+        return $this->hasMany('App\CityCase', 'category_id', 'id');
+    }
 }

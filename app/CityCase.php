@@ -20,7 +20,7 @@ class CityCase extends Model
 
     //relation with User one to many relationship
     public function category(){
-        return $this->belongsTo('App\User', 'category_id', 'id');
+        return $this->belongsTo('App\Category', 'category_id', 'id');
     }
     
     //relation with review many to one relationship

@@ -33,7 +33,7 @@
                             <h6 class="m-b-20 text-right">Total Case</h6>
                             <h4 class="text-right">
                               <i class="fas fa-bolt pull-left bg-indigo c-icon"></i>
-                              <span>{{ '1000' }}</span>
+                              <span>{{ $totalCase }}</span>
                             </h4>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                             <h6 class="m-b-20 text-right">Total Service Manager</h6>
                             <h4 class="text-right">
                                 <i class="fas fa-user-plus pull-left bg-cyan c-icon"></i>
-                                <span>{{ '10' }}</span>
+                                <span>{{ $totalServiceManager }}</span>
                             </h4>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <h6 class="m-b-20 text-right">Total Support Staff</h6>
                             <h4 class="text-right">
                                 <i class="fas fa-check pull-left bg-red c-icon"></i>
-                                <span>{{ '100' }}</span>
+                                <span>{{ $totalSupportStaff }}</span>
                             </h4>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                     <div class="card-statistic-4">
                         <div class="info-box7-block">
                             <h6 class="m-b-20 text-right">Total Registered Citizen</h6>
-                            <h4 class="text-right"><i class="fas fa-users pull-left bg-purple c-icon"></i><span>{{ '2000' }}</span></h4>
+                            <h4 class="text-right"><i class="fas fa-users pull-left bg-purple c-icon"></i><span>{{ $totalRegisteredCitizen }}</span></h4>
                         </div>
                     </div>
                 </div>

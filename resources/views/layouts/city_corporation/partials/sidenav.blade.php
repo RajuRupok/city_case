@@ -34,23 +34,23 @@
                 </a>
                 <ul class="dropdown-menu {{ Request::is('city_corporation/case/all*') ? 'd-block' : '' }}">
                     <li class="{{ Request::is('city_corporation/case/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Cases</a>
+                        <a class="nav-link" href="{{ route('city_corporation.case.index') }}">All Cases</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/case/pending*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Pending</a>
+                        <a class="nav-link" href="{{ route('city_corporation.case.pending') }}">Pending</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/case/running*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Running</a>
+                        <a class="nav-link" href="{{ route('city_corporation.case.running') }}">Running</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/case/completed*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Completed</a>
+                        <a class="nav-link" href="{{ route('city_corporation.case.completed') }}">Completed</a>
                     </li>
 
                     <li class="{{ Request::is('city_corporation/case/canceled*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Canceled</a>
+                        <a class="nav-link" href="{{ route('city_corporation.case.canceled') }}">Canceled</a>
                     </li>
                 </ul>
             </li>
