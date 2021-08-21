@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Citizen;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Category;
 
 class CaseController extends Controller
 {
@@ -24,7 +25,8 @@ class CaseController extends Controller
      */
     public function create()
     {
-        return view('citizen.case.create');
+        $categories = Category::all();
+        return view('citizen.case.create', compact(['categories']));
     }
 
     /**

@@ -47,9 +47,9 @@
                                     <label for="category">Case Category <sup class="text-danger">*</sup></label>
                                     <select name="category" class="form-select @error('category') is-invalid @enderror" required>
                                         <option selected>Select Category</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        @foreach ($categories as $data)
+                                            <option value="{{ $data->id }}">{{ $data->name }}</option>                                            
+                                        @endforeach
                                     </select>
         
                                     @error('category')

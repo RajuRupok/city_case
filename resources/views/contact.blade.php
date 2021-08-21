@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="contact-about">
-                    <h3>Vesperr</h3>
+                    <h3>CCM</h3>
                     <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
                     <div class="social-links">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -39,14 +39,14 @@
                     <div>
                         <i class="ri-map-pin-line"></i>
                         <p>
-                            A108 Adam Street<br />
-                            New York, NY 535022
+                            Sylhet City Corporation<br />
+                            Sylhet, Bangladesh
                         </p>
                     </div>
 
                     <div>
                         <i class="ri-mail-send-line"></i>
-                        <p>info@example.com</p>
+                        <p>info@ccm.com</p>
                     </div>
 
                     <div>

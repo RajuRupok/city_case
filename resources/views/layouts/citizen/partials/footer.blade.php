@@ -3,8 +3,8 @@
     <div class="container">
         <div class="row d-flex align-items-center">
             <div class="col-lg-6 text-lg-left text-center">
-                <div class="copyright">&copy; Copyright <strong>Vesperr</strong>. All Rights Reserved</div>
-                <div class="credits">Designed by <a href="#">BootstrapMade</a></div>
+                <div class="copyright">&copy; Copyright <strong>CCM</strong>. All Rights Reserved</div>
+                <div class="credits">Developed by <a href="#">Raju Deb</a></div>
             </div>
             <div class="col-lg-6">
                 <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">

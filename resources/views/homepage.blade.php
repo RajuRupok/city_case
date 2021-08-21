@@ -22,9 +22,9 @@
                 <h2 data-aos="fade-up" data-aos-delay="400">{{ __('Assign your area problems and we here to solve those.') }}</h2>
                 <div data-aos="fade-up" data-aos-delay="800">
                     @auth
-                        <a href="{{ route('citizen.case.create') }}" class="btn-get-started text-bold">{{ __('Assign Case') }}</a>
+                        <a href="{{ route('citizen.case.create') }}" class="btn-get-started text-bold">{{ __('Create Case') }}</a>
                     @else
-                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#loginToCCM" class="btn-get-started text-bold">{{ __('Assign Case') }}</a>
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#loginToCCM" class="btn-get-started text-bold">{{ __('Create Case') }}</a>
                     @endauth
                 </div>
             </div>
@@ -46,20 +46,14 @@
         <div class="row content">
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Sylhet City Corporation area 27.36 sq km, located in between 24°51´ and 24°55´ north latitudes and in between 91°50´ and 91°54´ east longitudes. It is bounded by sylhet sadarr upazila on the north, dakshin surma upazila on the south, Sylhet Sadar upazila on the east, Dakshin Surma and Sylhet Sadar upazilas on the west.
                 </p>
-                <ul>
-                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                    <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                </ul>
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
                 <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    Population  Total 270606; male 142320, female 128286. Water bodies Main River: Surma. Administration Sylhet Municipality was formed in 1867 and it was turned into City Corporation on April 9, 2001.
                 </p>
-                <a href="#" class="btn-learn-more">Learn More</a>
+                <a href="{{ route('about') }}" class="btn-learn-more">Learn More</a>
             </div>
         </div>
     </div>
@@ -117,48 +111,6 @@
 </section>
 <!-- End Counts Section -->
 
-<!-- ======= Services Section ======= -->
-<section id="services" class="services">
-    <div class="container">
-        <div class="section-title" data-aos="fade-up">
-            <h2>{{ __('Top Services') }}</h2>
-            <p>{{ __('Here is our top 4 Services') }}</p>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                    <h4 class="title"><a href="">{{ __('Service 01') }}</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                    <h4 class="title"><a href="">{{ __('Service 02') }}</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                    <h4 class="title"><a href="">{{ __('Service 03') }}</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                    <h4 class="title"><a href="">{{ __('Service 04') }}</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Services Section -->
-
 <!-- ======= Features Section ======= -->
 <section id="features" class="features">
     <div class="container">
@@ -168,76 +120,76 @@
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="300">
-            <div class="col-lg-3 col-md-4">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-store-line" style="color: #ffbb2c;"></i>
-                    <h3><a href="">Lorem Ipsum</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-                    <h3><a href="">Dolor Sitema</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
-                    <h3><a href="">Sed perspiciatis</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
-                    <h3><a href="">Magni Dolores</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-database-2-line" style="color: #47aeff;"></i>
-                    <h3><a href="">Nemo Enim</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
-                    <h3><a href="">Eiusmod Tempor</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-                    <h3><a href="">Midela Teren</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-                    <h3><a href="">Pira Neve</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4">
+            <div class="col-md-4 mb-4">
                 <div class="icon-box">
-                    <i class="ri-anchor-line" style="color: #b2904f;"></i>
-                    <h3><a href="">Dirada Pack</a></h3>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box">
-                    <i class="ri-disc-line" style="color: #b20969;"></i>
-                    <h3><a href="">Moton Ideal</a></h3>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box">
-                    <i class="ri-base-station-line" style="color: #ff5828;"></i>
-                    <h3><a href="">Verdo Park</a></h3>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box">
-                    <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
-                    <h3><a href="">Flavor Nivelanda</a></h3>
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -255,7 +207,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="contact-about">
-                    <h3>Vesperr</h3>
+                    <h3>CCM</h3>
                     <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
                     <div class="social-links">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -271,14 +223,14 @@
                     <div>
                         <i class="ri-map-pin-line"></i>
                         <p>
-                            A108 Adam Street<br />
-                            New York, NY 535022
+                            Sylhet City Corporation<br />
+                            Sylhet, Bangladesh
                         </p>
                     </div>
 
                     <div>
                         <i class="ri-mail-send-line"></i>
-                        <p>info@example.com</p>
+                        <p>info@ccm.com</p>
                     </div>
 
                     <div>
