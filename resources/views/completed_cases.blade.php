@@ -1,6 +1,6 @@
 @extends('layouts.citizen.app')
 
-@section('page_title', '| Services')
+@section('page_title', '| All Completed Cases')
 
 @section('stylesheet_links')
     {{--  External CSS  --}}
@@ -17,21 +17,19 @@
 <section id="features" class="features mt-5" style="min-height: 90vh;">
     <div class="container">
         <div class="section-title" data-aos="fade-up">
-            <h2>{{ __('Services') }}</h2>
-            <p>{{ __('All services that are provided by Us') }}</p>
+            <h2>{{ __('All Completed Cases') }}</h2>
+            <p>{{ __('All Tasks that has been completed') }}</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="300">
-            @foreach ($services as $service)
-                <div class="col-md-4 mb-4">
-                    <div class="icon-box">
-                        <i class="ri-quill-pen-line" style="color: var(--primaryColor);"></i>
-                        <h3>
-                            <a href="javascript:void(0);">{{ $service->name }}</a>
-                        </h3>
-                    </div>
+            <div class="col-md-4 mb-4">
+                <div class="icon-box">
+                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                    <h3>
+                        <a href="#">{{ 'Category Title Here' }}</a>
+                    </h3>
                 </div>
-            @endforeach
+            </div>
         </div>
     </div>
 </section>

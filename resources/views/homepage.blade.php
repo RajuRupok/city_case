@@ -120,78 +120,16 @@
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="300">
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
+            @foreach ($services as $service)
+                <div class="col-md-4 mb-4">
+                    <div class="icon-box">
+                        <i class="ri-quill-pen-line" style="color: var(--primaryColor);"></i>
+                        <h3>
+                            <a href="javascript:void(0);">{{ $service->name }}</a>
+                        </h3>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="#">{{ 'Category Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

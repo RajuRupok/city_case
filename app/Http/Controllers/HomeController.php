@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\CityCase;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +25,8 @@ class HomeController extends Controller
      */
     public function homepage()
     {
-        return view('homepage');
+        $services = Category::whereStatus('active')->get();
+        return view('homepage', compact(['services']));
     }
 
 
@@ -35,7 +38,8 @@ class HomeController extends Controller
 
     public function service()
     {
-        return view('service');
+        $services = Category::whereStatus('active')->get();
+        return view('service', compact(['services']));
     }
 
 
@@ -47,6 +51,23 @@ class HomeController extends Controller
 
     public function case()
     {
-        return view('case');
+        $cases = CityCase::select(['id', 'title', 'status'])->whereStatus('completed')->get();
+        return view('case', compact(['cases']));
+    }
+
+
+    public function caseDetails($case_id)
+    {
+        $case_id = bindec($case_id);
+
+        $case = CityCase::with(['review'])->whereId($case_id)->firstOrFail();
+
+        if ($case->status == 'completed') {
+            return view('citizen.case.show', compact(['case']));
+        } else {
+            toast('There is something wrong. Please try again.', 'warning')->autoClose(false)->timerProgressBar();
+            return redirect()->route('homepage');
+        }
+        
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.citizen.app')
 
-@section('page_title', '| My Cases')
+@section('page_title', '| All Completed Cases')
 
 @section('stylesheet_links')
     {{--  External CSS  --}}
@@ -13,7 +13,31 @@
 @endsection
 
 @section('content')
+<!-- ======= Features Section ======= -->
+<section id="features" class="features mt-5" style="min-height: 90vh;">
+    <div class="container">
+        <div class="section-title" data-aos="fade-up">
+            <h2>{{ __('All Completed Cases') }}</h2>
+            <p>{{ __('All Tasks that has been completed') }}</p>
+        </div>
 
+        <div class="row" data-aos="fade-up" data-aos-delay="300">
+            @foreach ($cases as $case)
+                <div class="col-md-4 mb-4">
+                    <div class="icon-box">
+                        <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                        <h3>
+                            <a href="{{ route('case.details', ['case_id' => decbin($case->id)]) }}">
+                                {{ $case->title }}
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+<!-- End Features Section -->
 @endsection
 
 

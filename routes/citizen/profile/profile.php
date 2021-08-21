@@ -9,5 +9,7 @@ Route::group([
     function(){
         Route::get('/', 'ProfileController@index')->name('index');
         Route::get('/edit', 'ProfileController@edit')->name('edit');
+
+        Route::post('/update/{id}', 'ProfileController@update')->name('update');
     }
 );

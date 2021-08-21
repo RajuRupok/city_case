@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Citizen;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -68,7 +69,31 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'name'     => 'required | string',
+            'email'     => 'required | string',
+            'mobile'     => 'required | string',
+            'nid'     => 'required | string',
+            'address'     => 'required | string',
+        ));
+
+        $citizen = User::whereId($id)->firstOrFail();
+
+        $citizen->name = $request->name;
+        $citizen->email = $request->email;
+        $citizen->mobile = $request->mobile;
+        $citizen->nid = $request->nid;
+        $citizen->address = $request->address;
+
+        $citizen->save();
+
+        if ($citizen->save()) {
+            toast('Profile Has Been Updated Successfully.', 'success')->timerProgressBar();
+            return redirect()->back();
+        } else {
+            toast('Profile Has Not Updated.', 'error')->autoClose(false)->timerProgressBar();
+            return redirect()->back()->withInput();
+        }
     }
 
     /**

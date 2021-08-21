@@ -36,7 +36,7 @@
                         <a href="{{ route('citizen.profile.index') }}" class="btn btn-dark btn-custom float-end">Back</a>
                     </div>
 
-                    <form action="#" method="post">
+                    <form action="{{ route('citizen.profile.update', ['id' => auth()->user()->id]) }}" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="row">

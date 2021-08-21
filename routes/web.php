@@ -93,6 +93,8 @@ Route::group(
         Route::get('/', 'HomeController@homepage')->name('homepage');
         Route::get('/about', 'HomeController@about')->name('about');
         Route::get('/service', 'HomeController@service')->name('service');
+        Route::get('/case', 'HomeController@case')->name('case');
+        Route::get('/case/details/{case_id}', 'HomeController@caseDetails')->name('case.details');
         Route::get('/contact', 'HomeController@contact')->name('contact');
     }
 );

@@ -14,6 +14,7 @@
                 <li><a class="nav-link {{ Route::is('homepage') ? 'active' : '' }}" href="/">{{ __('Home') }}</a></li>
                 <li><a class="nav-link {{ Route::is('about') ? 'active' : '' }}" href="{{ route('about') }}">{{ __('About') }}</a></li>
                 <li><a class="nav-link {{ Route::is('service') ? 'active' : '' }}" href="{{ route('service') }}">{{ __('Services') }}</a></li>
+                <li><a class="nav-link {{ Route::is('case') ? 'active' : '' }}" href="{{ route('case') }}">{{ __('Completed Cases') }}</a></li>
                 <li><a class="nav-link {{ Route::is('contact') ? 'active' : '' }}" href="{{ route('contact') }}">{{ __('Contact') }}</a></li>
 
                 @auth
