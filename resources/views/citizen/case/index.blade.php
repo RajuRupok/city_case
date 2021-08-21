@@ -22,14 +22,18 @@
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="300">
-            <div class="col-md-4 mb-4">
-                <div class="icon-box">
-                    <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
-                    <h3>
-                        <a href="{{ route('citizen.case.show', ['case_id' => decbin(1)]) }}">{{ 'Case Full Title Here' }}</a>
-                    </h3>
-                </div>
-            </div>
+            @foreach ($cases as $case)
+                <div class="col-md-4 mb-4">
+                    <div class="icon-box">
+                        <i class="ri-gradienter-line" style="color: var(--primaryColor);"></i>
+                        <h3>
+                            <a href="{{ route('citizen.case.show', ['case_id' => decbin($case->id)]) }}">
+                                {{ $case->title }}
+                            </a>
+                        </h3>
+                    </div>
+                </div>                
+            @endforeach
         </div>
     </div>
 </section>
