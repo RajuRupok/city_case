@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\CityCorporation;
 
+use App\User;
 use App\Category;
+use App\CityCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
 class CategoryController extends Controller
 {
@@ -89,7 +90,10 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::whereId($id)->firstOrFail();
-        return view('city_corporation.category.show', compact(['category']));
+                            
+        $cases = CityCase::whereCategoryId($category->id)->get();
+        
+        return view('city_corporation.category.show', compact(['category', 'cases']));
     }
 
     /**

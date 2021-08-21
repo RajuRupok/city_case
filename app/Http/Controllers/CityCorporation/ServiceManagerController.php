@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CityCorporation;
 
 use App\Category;
+use App\CityCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -105,8 +106,14 @@ class ServiceManagerController extends Controller
      */
     public function show($id)
     {
-        $service_manager = User::with(['category'])->whereRole('service_manager')->whereId($id)->firstOrFail();
-        return view('city_corporation.service_manager.show', compact(['service_manager']));
+        $service_manager = User::with(['category'])
+                            ->whereRole('service_manager')
+                            ->whereId($id)
+                            ->firstOrFail();
+
+        $cases = CityCase::whereCategoryId($service_manager->category_id)->get();
+
+        return view('city_corporation.service_manager.show', compact(['service_manager', 'cases']));
     }
 
     /**

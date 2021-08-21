@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\CityCorporation;
 
+use App\User;
 use App\Category;
+use App\CityCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -105,8 +106,14 @@ class SupportStaffController extends Controller
      */
     public function show($id)
     {
-        $support_staff = User::with(['category'])->whereRole('support_staff')->whereId($id)->firstOrFail();
-        return view('city_corporation.support_staff.show', compact(['support_staff']));
+        $support_staff = User::with(['category'])
+                            ->whereRole('support_staff')
+                            ->whereId($id)
+                            ->firstOrFail();
+                            
+        $cases = CityCase::whereSupportStaffId($support_staff->id)->get();
+        
+        return view('city_corporation.support_staff.show', compact(['support_staff', 'cases']));
     }
 
     /**

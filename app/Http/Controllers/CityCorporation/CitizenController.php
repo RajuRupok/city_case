@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\CityCorporation;
 
+use App\User;
+use App\CityCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
 class CitizenController extends Controller
 {
@@ -73,7 +74,10 @@ class CitizenController extends Controller
     public function show($id)
     {
         $citizen = User::whereRole('citizen')->whereId($id)->firstOrFail();
-        return view('city_corporation.citizen.show', compact(['citizen']));
+                            
+        $cases = CityCase::whereCitizenId($citizen->id)->get();
+        
+        return view('city_corporation.citizen.show', compact(['citizen', 'cases']));
     }
 
     /**

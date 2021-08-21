@@ -109,7 +109,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Assigned Cases</h4>
+                        <h4>{{ optional($service_manager->category)->name }} Related Cases</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -117,40 +117,33 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">Sl.</th>
-                                        <th>Case ID</th>
-                                        <th>Assigned At</th>
+                                        <th>Case Ticket</th>
+                                        <th>Created At</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($incidents as $sl => $incident)
-                                    <tr>
-                                        <td>{{ $sl+1 }}</td>
-                                        <td>
-                                            {{ $incident->incident_id }}
-                                        </td>
-    
-                                        @php 
-                                            $created_at = new DateTime($incident->created_at); $submitted = $created_at->format('d M Y'); 
-                                            
-                                            if ($incident->solved_at != NULL) { 
-                                                $solved_at = new DateTime($incident->solved_at); 
-                                                $solved = $solved_at->format('d M Y'); 
-                                            } 
-                                        @endphp
-    
-                                        <td>{{ $submitted }}</td>
-                                        <td>
-                                            @if ($incident->solved_at != NULL) {{ $solved }} @else
-                                            <div class="badge badge-danger">Unsolved</div>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-dark btn-sm">Details</a>
-                                        </td>
-                                    </tr>
-                                    @endforeach --}}
+                                    @foreach ($cases as $sl => $case)
+                                        <tr>
+                                            <td>{{ $sl+1 }}</td>
+                                            <td>
+                                                {{ $case->ticket }}
+                                            </td>
+        
+                                            @php 
+                                                $created_at = new DateTime($case->created_at);
+                                            @endphp        
+                                            <td>{{ $created_at->format('d M Y') }}</td>
+
+                                            <td class="text-uppercase text-bold">
+                                                {{ $case->status }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('city_corporation.case.show', ['id' => $case->id]) }}" target="_blank" class="btn btn-dark btn-sm">Details</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
