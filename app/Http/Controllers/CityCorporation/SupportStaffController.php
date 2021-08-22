@@ -139,14 +139,28 @@ class SupportStaffController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    
+    
+
+    public function status($id, $status)
     {
-        //
+        $user = User::whereId($id)->firstOrFail();
+
+        if ($status === 'active') {
+            $user->status = 'inactive';
+            $user->save();
+            
+            toast('Support Staff Has Been Deactivated.', 'success')->timerProgressBar();
+            return redirect()->back();
+        } elseif ($status === 'inactive') {
+            $user->status = 'inactive';
+            $user->save();
+            
+            toast('Support Staff Has Been Activated.', 'success')->timerProgressBar();
+            return redirect()->back();
+        } else {
+            toast('Something Wrong! Please Try Again.', 'error')->autoClose(false);
+            return redirect()->back();
+        }
     }
 }

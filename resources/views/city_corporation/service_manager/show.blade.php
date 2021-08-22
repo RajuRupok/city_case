@@ -103,6 +103,16 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="card-footer text-center pt-0">
+                        @if ($service_manager->status == 'active')
+                            <a href="{{ route('city_corporation.service_manager.status', ['id' => $service_manager, 'status' => 'active']) }}" class="btn btn-dark confirmation">Deactivate</a>
+                        @elseif ($service_manager->status == 'inactive')
+                            <a href="{{ route('city_corporation.service_manager.status', ['id' => $service_manager, 'status' => 'inactive']) }}" class="btn btn-dark confirmation">Activate</a>
+                        @endif
+
+                        <a href="{{ route('city_corporation.service_manager.edit', ['id' => $service_manager->id]) }}" class="btn btn-dark m-l-5">Edit</a>
+                    </div>
                 </div>
             </div>
     

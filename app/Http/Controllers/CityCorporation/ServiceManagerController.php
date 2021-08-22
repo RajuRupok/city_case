@@ -124,7 +124,14 @@ class ServiceManagerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service_manager = User::with(['category'])
+                            ->whereRole('service_manager')
+                            ->whereId($id)
+                            ->firstOrFail();
+
+        $categories = Category::whereStatus('active')->get();
+
+        return view('city_corporation.service_manager.edit', compact(['service_manager', 'categories']));
     }
 
     /**
@@ -136,17 +143,54 @@ class ServiceManagerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $this->validate($request, array(
+            'name'     => 'required | string',
+            'email'    => 'required | email',
+            'mobile'   => 'required | string',
+            'nid'   => 'required | string',
+            'address'   => 'required | string',
+            'category_id'   => 'required | integer',
+        ));
+        
+        $data = User::whereId($id)->firstOrFail();
+        $data->category_id = $request->category_id;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->mobile = $request->mobile;
+        $data->nid = $request->nid;
+        $data->address = $request->address;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+        $data->save();
+
+        if ($data->save()) {
+            toast('Service Manager Information Updated.', 'success')->timerProgressBar();
+            return redirect()->back();
+        } else {
+            toast('Service Manager Not Updated.', 'error')->autoClose(false)->timerProgressBar();
+            return redirect()->back()->withInput();
+        }
+    }
+    
+
+    public function status($id, $status)
     {
-        //
+        $user = User::whereId($id)->firstOrFail();
+
+        if ($status === 'active') {
+            $user->status = 'inactive';
+            $user->save();
+            
+            toast('Service Manager Has Been Deactivated.', 'success')->timerProgressBar();
+            return redirect()->back();
+        } elseif ($status === 'inactive') {
+            $user->status = 'inactive';
+            $user->save();
+            
+            toast('Service Manager Has Been Activated.', 'success')->timerProgressBar();
+            return redirect()->back();
+        } else {
+            toast('Something Wrong! Please Try Again.', 'error')->autoClose(false);
+            return redirect()->back();
+        }
     }
 }
