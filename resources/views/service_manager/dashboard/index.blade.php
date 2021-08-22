@@ -26,51 +26,28 @@
 
     <section class="section">
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-statistic-4">
                         <div class="info-box7-block">
-                            <h6 class="m-b-20 text-right">Total Incident</h6>
+                            <h6 class="m-b-20 text-right">Total Cases Under Me</h6>
                             <h4 class="text-right">
                               <i class="fas fa-bolt pull-left bg-indigo c-icon"></i>
-                              <span>{{ '$total_incident' }}</span>
+                              <span>{{ $totalCase }}</span>
                             </h4>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-statistic-4">
                         <div class="info-box7-block">
-                            <h6 class="m-b-20 text-right">Total Admin</h6>
-                            <h4 class="text-right">
-                                <i class="fas fa-user-plus pull-left bg-cyan c-icon"></i>
-                                <span>{{ '$total_admin' }}</span>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="card-statistic-4">
-                        <div class="info-box7-block">
-                            <h6 class="m-b-20 text-right">Total Supporter</h6>
+                            <h6 class="m-b-20 text-right">Total Support Staffs Under Me</h6>
                             <h4 class="text-right">
                                 <i class="fas fa-check pull-left bg-red c-icon"></i>
-                                <span>{{ '$total_supporter' }}</span>
+                                <span>{{ $totalSupportStaff }}</span>
                             </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="card-statistic-4">
-                        <div class="info-box7-block">
-                            <h6 class="m-b-20 text-right">Total Victim</h6>
-                            <h4 class="text-right"><i class="fas fa-users pull-left bg-purple c-icon"></i><span>{{ '$total_victim' }}</span></h4>
                         </div>
                     </div>
                 </div>

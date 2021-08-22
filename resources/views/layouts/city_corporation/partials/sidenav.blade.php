@@ -2,7 +2,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="#">
+            <a href="{{ route('city_corporation.dashboard.index') }}">
               <img alt="image" src="{{ asset('frontend/assets/img/CCM_Logo.svg') }}" class="header-logo" />
             </a>
         </div>

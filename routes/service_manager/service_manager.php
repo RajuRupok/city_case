@@ -7,10 +7,13 @@ Route::group([
     'namespace' => 'ServiceManager', // Controller
 ],
     function(){
-        /* ==================================
-        ============< Dashboard >============
-        ===================================*/
         // Dashboard
         include_once 'dashboard/dashboard.php';
+        
+        // case
+        include_once 'case/case.php';
+        
+        // support_staff
+        include_once 'support_staff/support_staff.php';
     }
 );

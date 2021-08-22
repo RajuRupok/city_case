@@ -1,4 +1,4 @@
-@extends('layouts.city_corporation.app')
+@extends('layouts.service_manager.app')
 
 @section('page_title', 'Case Details Details')
 
@@ -20,7 +20,7 @@
 @section('breadcrumb_section')
     <li class="breadcrumb-item">Cases</li>
     <li class="breadcrumb-item">
-      <a href="{{ route('city_corporation.category.index') }}">All Cases</a>
+      <a href="{{ route('service_manager.case.index') }}">All Cases</a>
     </li>
     <li class="breadcrumb-item">Details ({{ $case->ticket }})</li>
 @endsection
@@ -66,12 +66,10 @@
                             </p>
                             <p class="clearfix">
                                 <span class="float-left">
-                                    Case Creator:
+                                    Case Creator Number:
                                 </span>
                                 <span class="float-right text-muted">
-                                    <a href="{{ route('city_corporation.citizen.show', ['id' => $case->citizen->id]) }}" target="_blank" class="text-bold">
-                                        {{ $case->citizen->name }}
-                                    </a>
+                                    <a href="tel:{{ $case->citizen->mobile }}">{{ $case->citizen->mobile }}</a>
                                 </span>
                             </p>
                             <p class="clearfix">
@@ -100,7 +98,7 @@
                                 </span>
                                 <span class="float-right text-muted">
                                     @if ($case->support_staff != NULL)
-                                        <a href="{{ route('city_corporation.support_staff.show', ['id' => optional($case->support_staff)->id]) }}" target="_blank" class="text-bold">
+                                        <a href="{{ route('service_manager.support_staff.show', ['id' => optional($case->support_staff)->id]) }}" target="_blank" class="text-bold">
                                             {{ optional($case->support_staff)->name }}
                                         </a>
                                     @else
@@ -169,21 +167,21 @@
                 <div class="card card-secondary">
                     <div class="card-header">
                       <h4>Case Details</h4>
-                      {{-- @if ($case->status != 'completed' || 'canceled')
+                      @if ($case->status != 'completed' || 'canceled')
                         <div class="card-header-action">
                             @if ($case->status == 'pending' || $case->status == 'running')
-                                <a href="{{ route('city_corporation.case.cancel', ['case_id' => $case->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure Want to Cancel This Case?');">Cancel</a>                                
+                                <a href="{{ route('service_manager.case.cancel', ['case_id' => $case->id]) }}" class="btn btn-danger btn-sm confirmation">Cancel</a>
                             @endif
 
                             @if ($case->status == 'pending')
                                 <a href="javascript:void(0);" type="button" data-toggle="modal"
                                 data-target=".bd-example-modal-sm" class="btn btn-success btn-sm">Approve</a>
-                                
 
-                                @include('city_corporation.case.modals.assign_supporter')
+                                {{-- Modal Here --}}
+                                @include('service_manager.case.modals.assign_supporter')
                             @endif
                         </div>
-                      @endif --}}
+                      @endif
                     </div>
                     <div class="card-body">
                         {!! $case->details !!}

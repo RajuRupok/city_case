@@ -2,7 +2,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="#">
+            <a href="{{ route('service_manager.dashboard.index') }}">
               <img alt="image" src="{{ asset('frontend/assets/img/CCM_Logo.svg') }}" class="header-logo" />
             </a>
         </div>
@@ -34,23 +34,23 @@
                 </a>
                 <ul class="dropdown-menu {{ Request::is('service_manager/case/all*') ? 'd-block' : '' }}">
                     <li class="{{ Request::is('service_manager/case/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">My Cases</a>
+                        <a class="nav-link" href="{{ route('service_manager.case.index') }}">My Cases</a>
                     </li>
 
                     <li class="{{ Request::is('service_manager/case/pending*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Pending</a>
+                        <a class="nav-link" href="{{ route('service_manager.case.pending') }}">Pending</a>
                     </li>
 
                     <li class="{{ Request::is('service_manager/case/running*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Running</a>
+                        <a class="nav-link" href="{{ route('service_manager.case.running') }}">Running</a>
                     </li>
 
                     <li class="{{ Request::is('service_manager/case/completed*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Completed</a>
+                        <a class="nav-link" href="{{ route('service_manager.case.completed') }}">Completed</a>
                     </li>
 
                     <li class="{{ Request::is('service_manager/case/canceled*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Canceled</a>
+                        <a class="nav-link" href="{{ route('service_manager.case.canceled') }}">Canceled</a>
                     </li>
                 </ul>
             </li>
@@ -66,19 +66,19 @@
                 </a>
                 <ul class="dropdown-menu {{ Request::is('service_manager/support_staff/all*') ? 'd-block' : '' }}">
                     <li class="{{ Request::is('service_manager/support_staff/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">My Support Staffs</a>
+                        <a class="nav-link" href="{{ route('service_manager.support_staff.index') }}">My Support Staffs</a>
                     </li>
 
                     <li class="{{ Request::is('service_manager/support_staff/active*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Active</a>
+                        <a class="nav-link" href="{{ route('service_manager.support_staff.active') }}">Active</a>
                     </li>
 
                     <li class="{{ Request::is('service_manager/support_staff/inactive*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Inactive</a>
+                        <a class="nav-link" href="{{ route('service_manager.support_staff.inactive') }}">Inactive</a>
                     </li>
 
                     <li class="{{ Request::is('service_manager/support_staff/create*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Assign New</a>
+                        <a class="nav-link" href="{{ route('service_manager.support_staff.create') }}">Assign New</a>
                     </li>
                 </ul>
             </li>

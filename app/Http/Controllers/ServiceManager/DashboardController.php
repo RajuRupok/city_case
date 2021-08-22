@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\ServiceManager;
 
+use App\CityCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class DashboardController extends Controller
 {
@@ -14,7 +16,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('service_manager.dashboard.index');
+        $totalCase = CityCase::whereCategoryId(auth()->user()->category_id)->count();
+        
+        $totalSupportStaff = User::whereRole('support_staff')->whereCategoryId(auth()->user()->category_id)->count();
+        
+        return view('service_manager.dashboard.index', compact(['totalCase', 'totalSupportStaff']));
     }
 
     /**
