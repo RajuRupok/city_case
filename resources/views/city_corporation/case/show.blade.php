@@ -11,6 +11,9 @@
     {{--  External CSS  --}}
     <style>
     /* Custom CSS Here */
+    img {
+        width: 100% !important;
+    }
     </style>
 @endsection
 
