@@ -60,6 +60,16 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="card-footer text-center pt-0">
+                        @if ($category->status == 'inactive')
+                            <a href="{{ route('city_corporation.category.status', ['id' => $category, 'status' => 'active']) }}" class="btn btn-dark confirmation">Activate</a>
+                        @elseif ($category->status == 'active')
+                            <a href="{{ route('city_corporation.category.status', ['id' => $category, 'status' => 'inactive']) }}" class="btn btn-dark confirmation">Deactivate</a>
+                        @endif
+
+                        <a href="{{ route('city_corporation.category.edit', ['id' => $category->id]) }}" class="btn btn-dark m-l-5">Edit</a>
+                    </div>
                 </div>
             </div>
     

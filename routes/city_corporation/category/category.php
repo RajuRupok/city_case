@@ -14,5 +14,10 @@ Route::group([
 
         Route::get('/create', 'CategoryController@create')->name('create');
         Route::post('/store', 'CategoryController@store')->name('store');
+
+        Route::get('/all/edit/{id}', 'CategoryController@edit')->name('edit');
+        Route::post('/update/{id}', 'CategoryController@update')->name('update');
+        
+        Route::get('/status/{id}/{status}', 'CategoryController@status')->name('status');
     }
 );
