@@ -177,16 +177,16 @@ class ServiceManagerController extends Controller
         $user = User::whereId($id)->firstOrFail();
 
         if ($status === 'active') {
-            $user->status = 'inactive';
+            $user->status = 'active';
             $user->save();
             
-            toast('Service Manager Has Been Deactivated.', 'success')->timerProgressBar();
+            toast('Service Manager Has Been Activated.', 'success')->timerProgressBar();
             return redirect()->back();
         } elseif ($status === 'inactive') {
             $user->status = 'inactive';
             $user->save();
             
-            toast('Service Manager Has Been Activated.', 'success')->timerProgressBar();
+            toast('Service Manager Has Been Inactivated.', 'success')->timerProgressBar();
             return redirect()->back();
         } else {
             toast('Something Wrong! Please Try Again.', 'error')->autoClose(false);

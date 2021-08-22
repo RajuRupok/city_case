@@ -124,7 +124,14 @@ class SupportStaffController extends Controller
      */
     public function edit($id)
     {
-        //
+        $support_staff = User::with(['category'])
+                            ->whereRole('support_staff')
+                            ->whereId($id)
+                            ->firstOrFail();
+                            
+        $categories = Category::whereStatus('active')->get();
+        
+        return view('city_corporation.support_staff.edit', compact(['support_staff', 'categories']));
     }
 
     /**
@@ -136,7 +143,32 @@ class SupportStaffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'name'     => 'required | string',
+            'email'    => 'required | email',
+            'mobile'   => 'required | string',
+            'nid'   => 'required | string',
+            'address'   => 'required | string',
+            'category_id'   => 'required | integer',
+        ));
+        
+        $data = User::whereId($id)->firstOrFail();
+        $data->category_id = $request->category_id;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->mobile = $request->mobile;
+        $data->nid = $request->nid;
+        $data->address = $request->address;
+
+        $data->save();
+
+        if ($data->save()) {
+            toast('Support Staff Inforamtion Has Been Updated.', 'success')->timerProgressBar();
+            return redirect()->back();
+        } else {
+            toast('Support Staff Not Updated.', 'error')->autoClose(false);
+            return redirect()->back()->withInput();
+        }
     }
 
     
@@ -147,16 +179,16 @@ class SupportStaffController extends Controller
         $user = User::whereId($id)->firstOrFail();
 
         if ($status === 'active') {
-            $user->status = 'inactive';
+            $user->status = 'active';
             $user->save();
             
-            toast('Support Staff Has Been Deactivated.', 'success')->timerProgressBar();
+            toast('Support Staff Has Been Activated.', 'success')->timerProgressBar();
             return redirect()->back();
         } elseif ($status === 'inactive') {
             $user->status = 'inactive';
             $user->save();
             
-            toast('Support Staff Has Been Activated.', 'success')->timerProgressBar();
+            toast('Support Staff Has Been Inactivated.', 'success')->timerProgressBar();
             return redirect()->back();
         } else {
             toast('Something Wrong! Please Try Again.', 'error')->autoClose(false);

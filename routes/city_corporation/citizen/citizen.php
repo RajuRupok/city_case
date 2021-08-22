@@ -11,5 +11,7 @@ Route::group([
         Route::get('/approved', 'CitizenController@approved')->name('approved');
         Route::get('/banned', 'CitizenController@banned')->name('banned');
         Route::get('/all/show/{id}', 'CitizenController@show')->name('show');
+
+        Route::get('/status/{id}/{status}', 'CitizenController@status')->name('status');
     }
 );

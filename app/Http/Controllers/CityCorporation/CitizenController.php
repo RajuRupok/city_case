@@ -111,10 +111,10 @@ class CitizenController extends Controller
         $user = User::whereId($id)->firstOrFail();
 
         if ($status === 'active') {
-            $user->status = 'inactive';
+            $user->status = 'active';
             $user->save();
             
-            toast('Citizen Has Been Deactivated.', 'success')->timerProgressBar();
+            toast('Citizen Has Been Activated.', 'success')->timerProgressBar();
             return redirect()->back();
         } elseif ($status === 'banned') {
             $user->status = 'banned';

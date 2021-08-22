@@ -1,6 +1,6 @@
 @extends('layouts.city_corporation.app')
 
-@section('page_title', 'Create New Support Staff')
+@section('page_title', 'Edit Support Staff')
 
 @section('css_links')
     {{--  External CSS  --}}
@@ -18,7 +18,7 @@
 
 @section('breadcrumb_section')
     <li class="breadcrumb-item">Support Staffs</li>
-    <li class="breadcrumb-item active">Create New Support Staff</li>
+    <li class="breadcrumb-item active">Edit Support Staff</li>
 @endsection
 
 @section('main_content')
@@ -32,36 +32,36 @@
           <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Create New Support Staff</h4>
+                    <h4>Edit Support Staff</h4>
                 </div>
-                <form action="{{ route('city_corporation.support_staff.store') }}" method="POST">
+                <form action="{{ route('city_corporation.support_staff.update', ['id' => $support_staff->id]) }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name <sup class="text-danger">*</sup></label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" required placeholder="Name" name="name" class="form-control">
+                                <input type="text" required placeholder="Name" value="{{ $support_staff->name }}" name="name" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mobile <sup class="text-danger">*</sup></label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" required placeholder="Mobile Number" name="mobile" class="form-control">
+                                <input type="text" required placeholder="Mobile Number" value="{{ $support_staff->mobile }}" name="mobile" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">NID <sup class="text-danger">*</sup></label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="number" minlength="10" maxlength="15" required placeholder="NID" name="nid" class="form-control">
+                                <input type="number" value="{{ $support_staff->nid }}" minlength="10" maxlength="15" required placeholder="NID" name="nid" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Address <sup class="text-danger">*</sup></label>
                             <div class="col-sm-12 col-md-7">
-                              <textarea name="address" class="form-control" placeholder="Address" required rows="4">{{ old('address') }}</textarea>
+                              <textarea name="address" class="form-control" placeholder="Address" required rows="4">{{ $support_staff->address }}</textarea>
                             </div>
                         </div>
 
@@ -71,7 +71,7 @@
                               <select class="form-control select2" name="category_id" required>
                                 <option>Select Category</option>
                                 @foreach ($categories as $category)
-                                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                  <option @if ($support_staff->category_id == $category->id) selected @endif value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                               </select>
                             </div>
@@ -80,19 +80,12 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email <sup class="text-danger">*</sup></label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="email" required placeholder="Login Email" name="email" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Password <sup class="text-danger">*</sup></label>
-                            <div class="col-sm-12 col-md-7">
-                                <input type="password" required placeholder="Login Password" name="password" class="form-control">
+                                <input type="email" value="{{ $support_staff->email }}" required placeholder="Login Email" name="email" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-dark float-right m-b-15">Create Support Staff</button>
+                        <button class="btn btn-dark float-right m-b-15">Update Support Staff</button>
                     </div>
                 </form>
             </div>

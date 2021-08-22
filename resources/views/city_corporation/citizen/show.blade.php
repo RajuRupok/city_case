@@ -98,6 +98,14 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="card-footer text-center pt-0">
+                        @if ($citizen->status == 'banned')
+                            <a href="{{ route('city_corporation.citizen.status', ['id' => $citizen, 'status' => 'active']) }}" class="btn btn-dark confirmation">Activate</a>
+                        @elseif ($citizen->status == 'active')
+                            <a href="{{ route('city_corporation.citizen.status', ['id' => $citizen, 'status' => 'banned']) }}" class="btn btn-dark confirmation">Ban This Citizen</a>
+                        @endif
+                    </div>
                 </div>
             </div>
     

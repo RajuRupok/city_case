@@ -14,5 +14,10 @@ Route::group([
 
         Route::get('/create', 'SupportStaffController@create')->name('create');
         Route::post('/store', 'SupportStaffController@store')->name('store');
+
+        Route::get('/edit/{id}', 'SupportStaffController@edit')->name('edit');
+        Route::post('/update/{id}', 'SupportStaffController@update')->name('update');
+
+        Route::get('/status/{id}/{status}', 'SupportStaffController@status')->name('status');
     }
 );
