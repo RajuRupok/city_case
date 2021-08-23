@@ -33,6 +33,8 @@ class CreateCityCasesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             
             $table->enum('status', ['pending', 'running', 'completed', 'canceled']);
+            $table->text('completion_report')->nullable();
+            $table->text('cancelation_reason')->nullable();
 
             $table->timestamps();
         });

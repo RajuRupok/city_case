@@ -61,6 +61,27 @@
         </div>
 
         <hr>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="300">
+
+            @if ($case->status == 'completed')
+                <div class="section-title" data-aos="fade-up">
+                    <h2>{{ __('Completion Report') }}</h2>
+                </div>
+                <div class="report">
+                    {!! $case->completion_report !!}
+                </div>
+            @elseif ($case->status == 'canceled')
+                <div class="section-title" data-aos="fade-up">
+                    <h2>{{ __('Cancelation Reason') }}</h2>
+                </div>
+                <div class="report">
+                    {!! $case->cancelation_reason !!}
+                </div>
+            @endif
+        </div>
+
+        <hr>
         <div class="row justify-content-center">
             <div class="col-12">
                 @if ($case->status == 'pending')

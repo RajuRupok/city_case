@@ -2,7 +2,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="#">
+            <a href="{{ route('support_staff.dashboard.index') }}">
               <img alt="image" src="{{ asset('frontend/assets/img/CCM_Logo.svg') }}" class="header-logo" />
             </a>
         </div>
@@ -34,19 +34,19 @@
                 </a>
                 <ul class="dropdown-menu {{ Request::is('support_staff/case/all*') ? 'd-block' : '' }}">
                     <li class="{{ Request::is('support_staff/case/all*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">All Cases</a>
+                        <a class="nav-link" href="{{ route('support_staff.case.index') }}">All Cases</a>
                     </li>
                     
                     <li class="{{ Request::is('support_staff/case/new_assigned*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">New Assigned Cases</a>
+                        <a class="nav-link" href="{{ route('support_staff.case.new_assigned') }}">New Assigned Cases</a>
                     </li>
 
                     <li class="{{ Request::is('support_staff/case/completed*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Completed</a>
+                        <a class="nav-link" href="{{ route('support_staff.case.completed') }}">Completed</a>
                     </li>
 
                     <li class="{{ Request::is('support_staff/case/canceled*') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Canceled</a>
+                        <a class="nav-link" href="{{ route('support_staff.case.canceled') }}">Canceled</a>
                     </li>
                 </ul>
             </li>

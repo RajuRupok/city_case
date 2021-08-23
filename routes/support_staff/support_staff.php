@@ -7,10 +7,10 @@ Route::group([
     'namespace' => 'SupportStaff', // Controller
 ],
     function(){
-        /* ==================================
-        ============< Dashboard >============
-        ===================================*/
         // Dashboard
         include_once 'dashboard/dashboard.php';
+        
+        // case
+        include_once 'case/case.php';
     }
 );

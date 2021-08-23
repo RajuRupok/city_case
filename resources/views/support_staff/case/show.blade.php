@@ -1,4 +1,4 @@
-@extends('layouts.city_corporation.app')
+@extends('layouts.support_staff.app')
 
 @section('page_title', 'Case Details Details')
 
@@ -20,7 +20,7 @@
 @section('breadcrumb_section')
     <li class="breadcrumb-item">Cases</li>
     <li class="breadcrumb-item">
-      <a href="{{ route('city_corporation.category.index') }}">All Cases</a>
+      <a href="{{ route('support_staff.case.index') }}">All Cases</a>
     </li>
     <li class="breadcrumb-item">Details ({{ $case->ticket }})</li>
 @endsection
@@ -66,12 +66,10 @@
                             </p>
                             <p class="clearfix">
                                 <span class="float-left">
-                                    Case Creator:
+                                    Case Creator Number:
                                 </span>
                                 <span class="float-right text-muted">
-                                    <a href="{{ route('city_corporation.citizen.show', ['id' => $case->citizen->id]) }}" target="_blank" class="text-bold">
-                                        {{ $case->citizen->name }}
-                                    </a>
+                                    <a href="tel:{{ $case->citizen->mobile }}">{{ $case->citizen->mobile }}</a>
                                 </span>
                             </p>
                             <p class="clearfix">
@@ -94,25 +92,11 @@
                                     {{ $case->category->name }}
                                 </span>
                             </p>
-                            <p class="clearfix">
-                                <span class="float-left">
-                                    Support Staff:
-                                </span>
-                                <span class="float-right text-muted">
-                                    @if ($case->support_staff != NULL)
-                                        <a href="{{ route('city_corporation.support_staff.show', ['id' => optional($case->support_staff)->id]) }}" target="_blank" class="text-bold">
-                                            {{ optional($case->support_staff)->name }}
-                                        </a>
-                                    @else
-                                        Not Assigned
-                                    @endif
-                                </span>
-                            </p>
 
                             @if ($case->support_staff != NULL)
                                 <p class="clearfix">
                                     <span class="float-left">
-                                        Support Staff Assigned At:
+                                        Assigned At:
                                     </span>    
                                     @php 
                                         $dd = new DateTime($case->started_at); 
@@ -169,6 +153,21 @@
                 <div class="card card-secondary">
                     <div class="card-header">
                       <h4>Case Details</h4>
+                      @if ($case->status != 'completed' || 'canceled')
+                        <div class="card-header-action">
+                            @if ($case->status == 'running')
+                                <a href="javascript:void(0);" type="button" data-toggle="modal"
+                                data-target=".cancelCase" class="btn btn-danger btn-sm">Cancel</a>
+
+                                <a href="javascript:void(0);" type="button" data-toggle="modal"
+                                data-target=".completeCase" class="btn btn-success btn-sm">Complete</a>
+
+                                {{-- Modal Here --}}
+                                @include('support_staff.case.modals.cancel')
+                                @include('support_staff.case.modals.complete')
+                            @endif
+                        </div>
+                      @endif
                     </div>
                     <div class="card-body">
                         {!! $case->details !!}

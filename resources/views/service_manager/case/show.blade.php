@@ -187,6 +187,26 @@
                         {!! $case->details !!}
                     </div>
                 </div>
+
+                @if ($case->status == 'completed')
+                    <div class="card card-success">
+                        <div class="card-header">
+                        <h4>Completion Report</h4>
+                        </div>
+                        <div class="card-body">
+                            {!! $case->completion_report !!}
+                        </div>
+                    </div>
+                @elseif ($case->status == 'canceled')
+                    <div class="card card-danger">
+                        <div class="card-header">
+                        <h4>Cancelation Reason</h4>
+                        </div>
+                        <div class="card-body">
+                            {!! $case->cancelation_reason !!}
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
