@@ -37,7 +37,25 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category Name <sup class="text-danger">*</sup></label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" required placeholder="Name" name="name" class="form-control">
+                                <input type="text" required placeholder="Ex: Water Service" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
+        
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Short Name <sup class="text-danger">*</sup></label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" minlength="4" maxlength="4" required placeholder="Ex: WTSR" name="short_name" value="{{ old('short_name') }}" class="form-control text-uppercase @error('short_name') is-invalid @enderror">
+        
+                                @error('short_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>

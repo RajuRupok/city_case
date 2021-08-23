@@ -63,12 +63,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, array(
-            'name'     => 'required | string'
-        ));
+        $this->validate($request, 
+            array(
+                'name'          => 'required | string',
+                'short_name'    => ['required', 'unique:categories,short_name', 'string', 'size:4'],
+            ),
+            array(
+                'short_name.unique' => 'This Short Name already exist in database. The Short Name Must Be Unique',
+            )
+        );
         
         $category = new Category();
         $category->name = $request->name;
+        $category->short_name = strtoupper($request->short_name);
 
         $category->save();
 
@@ -118,12 +125,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, array(
-            'name'     => 'required | string'
-        ));
+        $this->validate($request, 
+            array(
+                'name'          => 'required | string',
+                'short_name'    => ['required', 'unique:categories,short_name', 'string', 'size:4'],
+            ),
+            array(
+                'short_name.unique' => 'This Short Name already exist in database. The Short Name Must Be Unique',
+            )
+        );
         
         $category = Category::whereId($id)->firstOrFail();
         $category->name = $request->name;
+        $category->short_name = strtoupper($request->short_name);
 
         $category->save();
 

@@ -16,6 +16,26 @@
             border-radius: 0px !important;
             border: 1px solid var(--primaryColor) !important;
         }
+        .ticket {
+            display: inline-flex;
+            width: fit-content;
+            padding: 0px 20px 15px;
+            background: #f5f5f5;
+            border-radius: 50px;
+        }
+
+        .case-pending {
+            color: orange;
+        }
+        .case-running {
+            color: blue;
+        }
+        .case-completed {
+            color: green;
+        }
+        .case-canceled {
+            color: red;
+        }
     </style>
 @endsection
 
@@ -25,6 +45,15 @@
     <div class="container">
         <div class="section-title" data-aos="fade-up">
             <h2>{{ $case->title }}</h2>
+            <div class="ticket">
+                <p class="text-bold text-muted">Ticket No: <span class="text-uppercase text-dark">{{ $case->ticket }}</span></p>
+            </div>
+            <div class="ticket">
+                <p class="text-bold text-muted">
+                    Status: 
+                    <span class="text-uppercase case-{{ $case->status }}">{{ $case->status }}</span>
+                </p>
+            </div>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="300">

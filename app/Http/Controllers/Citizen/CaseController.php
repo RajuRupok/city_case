@@ -50,7 +50,10 @@ class CaseController extends Controller
 
         $case =  new CityCase();
 
-        $case->ticket = 'CCM-'.date('Y'). '-' . auth()->user()->id . strtotime(now());
+        $category_short_name = Category::select(['id', 'short_name'])->whereId($request->category)->firstOrFail();
+
+        $case->ticket = 'CCM' . '-' . substr(date('Y'), -2) . '-' . $category_short_name->short_name . '-' . dechex(auth()->user()->id) . strtotime(now());
+
         $case->title = $request->title;
         $case->location = $request->location;
         $case->details = $request->details;
