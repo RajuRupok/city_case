@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\CityCorporation;
 
+use App\User;
+use App\Category;
 use App\CityCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
 class CaseController extends Controller
 {
-    public function index()
+    public function index($category = NULL, $status = NULL, $start_date = NULL, $end_date = NULL)
     {
         $cases = CityCase::with(['category'])->get();
-        return view('city_corporation.case.index', compact(['cases']));
+        $categories = Category::all();
+        return view('city_corporation.case.index', compact(['cases', 'categories']));
     }
     
     
