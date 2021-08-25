@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\SupportStaff;
 
+use Exception;
 use App\CityCase;
+use App\Mail\CaseReportMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class CaseController extends Controller
 {
@@ -82,8 +85,13 @@ class CaseController extends Controller
             $data->save();
 
             if ($data->save()) {
+                try {
+                    Mail::send(new CaseReportMail($data));
+                } catch (Exception $e) {
+                    toast('Failed to sending mail. Please try again.', 'warning')->autoClose(false);
+                    return redirect()->back();
+                }
                 toast('Case Has Been Canceled Successfully.', 'success')->timerProgressBar();
-                return redirect()->back();
             } else {
                 toast('Case Has Not Canceled.', 'error')->autoClose(false)->timerProgressBar();
                 return redirect()->back()->withInput();
@@ -92,6 +100,7 @@ class CaseController extends Controller
             toast('You are not authorise to cancel this case.', 'error')->autoClose(false);
             return redirect()->back();
         }
+        return redirect()->back();
     }
 
 
@@ -114,8 +123,13 @@ class CaseController extends Controller
             $data->save();
 
             if ($data->save()) {
+                try {
+                    Mail::send(new CaseReportMail($data));
+                } catch (Exception $e) {
+                    toast('Failed to sending mail. Please try again.', 'warning')->autoClose(false);
+                    return redirect()->back();
+                }
                 toast('Case Has Been Marked as Completed.', 'success')->timerProgressBar();
-                return redirect()->back();
             } else {
                 toast('Case Has Not Marked as Completed! Please Try Again.', 'error')->autoClose(false)->timerProgressBar();
                 return redirect()->back()->withInput();
@@ -124,5 +138,6 @@ class CaseController extends Controller
             toast('You are not authorise to update this case.', 'error')->autoClose(false);
             return redirect()->back();
         }
+        return redirect()->back();
     }
 }

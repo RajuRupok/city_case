@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\SupportStaff;
 
+use App\CityCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,19 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('support_staff.dashboard.index');
+        $totalCase = CityCase::whereSupportStaffId(auth()->user()->id)->count();
+        $totalCompletedCase = CityCase::whereSupportStaffId(auth()->user()->id)
+                                        ->whereStatus('completed')
+                                        ->whereNotNull('completion_report')
+                                        ->whereNotNull('ended_at')
+                                        ->count();
+        $totalCanceledCase = CityCase::whereSupportStaffId(auth()->user()->id)
+                                        ->whereStatus('canceled')
+                                        ->whereNotNull('cancelation_reason')
+                                        ->whereNotNull('ended_at')
+                                        ->count();
+        
+        return view('support_staff.dashboard.index', compact(['totalCase', 'totalCompletedCase', 'totalCanceledCase']));
     }
 
     /**

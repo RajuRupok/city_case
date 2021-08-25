@@ -139,8 +139,10 @@ class SupportStaffController extends Controller
                             ->whereRole('support_staff')
                             ->whereId($id)
                             ->firstOrFail();
+                            
+        $categories = Category::whereStatus('active')->get();
         
-        return view('service_manager.support_staff.edit', compact(['support_staff']));
+        return view('service_manager.support_staff.edit', compact(['support_staff', 'categories']));
     }
 
     /**

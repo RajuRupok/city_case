@@ -49,13 +49,13 @@
                 @else
                     <li class="dropdown {{ Request::is('citizen/profile*') ? 'active' : '' }}">
                         <a href="javascript:void(0);">
-                            <span>{{ __('Profile') }}</span>
+                            <span>{{ auth()->user()->name }}</span>
                             <i class="bi bi-chevron-down"></i>
                         </a>
                         <ul>
                             <li>
                                 <a href="{{ route('citizen.profile.index') }}" class="{{ Request::is('citizen/profile*') ? 'active' : '' }}">
-                                    {{ __('Profile') }}
+                                    {{ __('My Profile') }}
                                 </a>
                             </li>
                             <li>

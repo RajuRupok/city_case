@@ -66,6 +66,14 @@
                             </p>
                             <p class="clearfix">
                                 <span class="float-left">
+                                    Case Creator Name:
+                                </span>
+                                <span class="float-right text-dark text-bold">
+                                    {{ $case->citizen->name }}
+                                </span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left">
                                     Case Creator Number:
                                 </span>
                                 <span class="float-right text-muted">

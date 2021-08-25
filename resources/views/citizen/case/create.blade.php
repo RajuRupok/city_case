@@ -84,7 +84,7 @@
 
                                 <div class="col-md-12 mb-3">
                                     <label for="location">Location <sup class="text-danger">*</sup></label>
-                                    <textarea id="location" name="location" class="form-control @error('location') is-invalid @enderror" placeholder="Location" required rows="2">{{ old('location') }}</textarea>
+                                    <textarea id="location" name="location" class="form-control @error('location') is-invalid @enderror" placeholder="Location" required rows="2">{{ auth()->user()->address ?? old('location') }}</textarea>
         
                                     @error('location')
                                         <span class="invalid-feedback" role="alert">
