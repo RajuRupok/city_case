@@ -13,6 +13,7 @@ class CaseController extends Controller
     {
         $cases = CityCase::with(['category'])
                         ->whereCategoryId(auth()->user()->category_id)
+                        ->orderBy('created_at', 'DESC')
                         ->get();
 
         return view('service_manager.case.index', compact(['cases']));
@@ -21,28 +22,28 @@ class CaseController extends Controller
     
     public function pending()
     {
-        $cases = CityCase::with(['category'])->whereCategoryId(auth()->user()->category_id)->whereStatus('pending')->get();
+        $cases = CityCase::with(['category'])->whereCategoryId(auth()->user()->category_id)->whereStatus('pending')->orderBy('updated_at', 'DESC')->get();
         return view('service_manager.case.pending', compact(['cases']));
     }
     
     
     public function running()
     {
-        $cases = CityCase::with(['category'])->whereCategoryId(auth()->user()->category_id)->whereStatus('running')->get();
+        $cases = CityCase::with(['category'])->whereCategoryId(auth()->user()->category_id)->whereStatus('running')->orderBy('started_at', 'DESC')->get();
         return view('service_manager.case.running', compact(['cases']));
     }
     
     
     public function completed()
     {
-        $cases = CityCase::with(['category'])->whereCategoryId(auth()->user()->category_id)->whereStatus('completed')->get();
+        $cases = CityCase::with(['category'])->whereCategoryId(auth()->user()->category_id)->whereStatus('completed')->orderBy('ended_at', 'DESC')->get();
         return view('service_manager.case.completed', compact(['cases']));
     }
     
     
     public function canceled()
     {
-        $cases = CityCase::with(['category'])->whereCategoryId(auth()->user()->category_id)->whereStatus('canceled')->get();
+        $cases = CityCase::with(['category'])->whereCategoryId(auth()->user()->category_id)->whereStatus('canceled')->orderBy('ended_at', 'DESC')->get();
         return view('service_manager.case.canceled', compact(['cases']));
     }
     

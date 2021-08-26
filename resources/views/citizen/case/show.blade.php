@@ -54,6 +54,40 @@
                     <span class="text-uppercase case-{{ $case->status }}">{{ $case->status }}</span>
                 </p>
             </div>
+            <div class="ticket">
+                @php 
+                    $dd = new DateTime($case->created_at); 
+                    $date = $dd->format('d-m-Y');
+                @endphp
+                <p class="text-bold text-muted">
+                    Created At: 
+                    <span class="text-uppercase text-dark">{{ $date }}</span>
+                </p>
+            </div>
+
+            @if ($case->status == 'completed')
+                <div class="ticket">
+                    @php 
+                        $dd = new DateTime($case->ended_at); 
+                        $date = $dd->format('d-m-Y');
+                    @endphp
+                    <p class="text-bold text-muted">
+                        Completed At: 
+                        <span class="text-uppercase text-dark">{{ $date }}</span>
+                    </p>
+                </div>
+            @elseif ($case->status == 'canceled')
+                <div class="ticket">
+                    @php 
+                        $dd = new DateTime($case->ended_at); 
+                        $date = $dd->format('d-m-Y');
+                    @endphp
+                    <p class="text-bold text-muted">
+                        Canceled At: 
+                        <span class="text-uppercase text-dark">{{ $date }}</span>
+                    </p>
+                </div>
+            @endif
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="300">

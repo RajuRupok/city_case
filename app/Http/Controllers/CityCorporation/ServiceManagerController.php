@@ -20,7 +20,7 @@ class ServiceManagerController extends Controller
      */
     public function index()
     {
-        $service_managers = User::with(['category'])->whereRole('service_manager')->get();
+        $service_managers = User::with(['category'])->whereRole('service_manager')->orderBy('created_at', 'DESC')->get();
         return view('city_corporation.service_manager.index', compact(['service_managers']));
     }
     
@@ -32,7 +32,7 @@ class ServiceManagerController extends Controller
      */
     public function active()
     {
-        $service_managers = User::with(['category'])->whereRole('service_manager')->whereStatus('active')->get();
+        $service_managers = User::with(['category'])->whereRole('service_manager')->whereStatus('active')->orderBy('updated_at', 'DESC')->get();
         return view('city_corporation.service_manager.active', compact(['service_managers']));
     }
     
@@ -44,7 +44,7 @@ class ServiceManagerController extends Controller
      */
     public function inactive()
     {
-        $service_managers = User::with(['category'])->whereRole('service_manager')->whereStatus('inactive')->get();
+        $service_managers = User::with(['category'])->whereRole('service_manager')->whereStatus('inactive')->orderBy('updated_at', 'DESC')->get();
         return view('city_corporation.service_manager.inactive', compact(['service_managers']));
     }
 
@@ -111,7 +111,7 @@ class ServiceManagerController extends Controller
                             ->whereId($id)
                             ->firstOrFail();
 
-        $cases = CityCase::whereCategoryId($service_manager->category_id)->get();
+        $cases = CityCase::whereCategoryId($service_manager->category_id)->orderBy('updated_at', 'DESC')->get();
 
         return view('city_corporation.service_manager.show', compact(['service_manager', 'cases']));
     }

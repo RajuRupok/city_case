@@ -21,6 +21,7 @@ class SupportStaffController extends Controller
         $support_staffs = User::with(['category'])
                                 ->whereRole('support_staff')
                                 ->whereCategoryId(auth()->user()->category_id)
+                                ->orderBy('updated_at', 'DESC')
                                 ->get();
 
         return view('service_manager.support_staff.index', compact(['support_staffs']));
@@ -38,6 +39,7 @@ class SupportStaffController extends Controller
                                 ->whereRole('support_staff')
                                 ->whereCategoryId(auth()->user()->category_id)
                                 ->whereStatus('active')
+                                ->orderBy('updated_at', 'DESC')
                                 ->get();
 
         return view('service_manager.support_staff.active', compact(['support_staffs']));
@@ -55,6 +57,7 @@ class SupportStaffController extends Controller
                                 ->whereRole('support_staff')
                                 ->whereCategoryId(auth()->user()->category_id)
                                 ->whereStatus('inactive')
+                                ->orderBy('updated_at', 'DESC')
                                 ->get();
 
         return view('service_manager.support_staff.inactive', compact(['support_staffs']));
@@ -122,7 +125,7 @@ class SupportStaffController extends Controller
                             ->whereId($id)
                             ->firstOrFail();
                             
-        $cases = CityCase::whereSupportStaffId($support_staff->id)->get();
+        $cases = CityCase::whereSupportStaffId($support_staff->id)->orderBy('started_at', 'DESC')->get();
         
         return view('service_manager.support_staff.show', compact(['support_staff', 'cases']));
     }

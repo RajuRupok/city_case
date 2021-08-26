@@ -16,7 +16,7 @@ class CitizenController extends Controller
      */
     public function index()
     {
-        $citizens = User::whereRole('citizen')->get();
+        $citizens = User::whereRole('citizen')->orderBy('created_at', 'DESC')->get();
         return view('city_corporation.citizen.index', compact(['citizens']));
     }
     
@@ -28,7 +28,7 @@ class CitizenController extends Controller
      */
     public function approved()
     {
-        $citizens = User::whereRole('citizen')->whereStatus('active')->get();
+        $citizens = User::whereRole('citizen')->whereStatus('active')->orderBy('updated_at', 'DESC')->get();
         return view('city_corporation.citizen.approved', compact(['citizens']));
     }
     
@@ -40,7 +40,7 @@ class CitizenController extends Controller
      */
     public function banned()
     {
-        $citizens = User::whereRole('citizen')->whereStatus('banned')->get();
+        $citizens = User::whereRole('citizen')->whereStatus('banned')->orderBy('updated_at', 'DESC')->get();
         return view('city_corporation.citizen.banned', compact(['citizens']));
     }
 
@@ -75,7 +75,7 @@ class CitizenController extends Controller
     {
         $citizen = User::whereRole('citizen')->whereId($id)->firstOrFail();
                             
-        $cases = CityCase::whereCitizenId($citizen->id)->get();
+        $cases = CityCase::whereCitizenId($citizen->id)->orderBy('updated_at', 'DESC')->get();
         
         return view('city_corporation.citizen.show', compact(['citizen', 'cases']));
     }

@@ -18,7 +18,7 @@ class CaseController extends Controller
      */
     public function index()
     {
-        $cases = CityCase::select('id', 'title')->whereCitizenId(auth()->user()->id)->get();
+        $cases = CityCase::select('id', 'title')->whereCitizenId(auth()->user()->id)->orderBy('created_at', 'DESC')->get();
         return view('citizen.case.index', compact(['cases']));
     }
 

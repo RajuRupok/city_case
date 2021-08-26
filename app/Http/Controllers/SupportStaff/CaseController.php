@@ -15,6 +15,7 @@ class CaseController extends Controller
     {
         $cases = CityCase::whereCategoryId(auth()->user()->category_id)
                         ->whereSupportStaffId(auth()->user()->id)
+                        ->orderBy('started_at', 'DESC')
                         ->get();
 
         return view('support_staff.case.index', compact(['cases']));
@@ -26,6 +27,7 @@ class CaseController extends Controller
         $cases = CityCase::whereCategoryId(auth()->user()->category_id)
                         ->whereSupportStaffId(auth()->user()->id)
                         ->whereStatus('running')
+                        ->orderBy('started_at', 'DESC')
                         ->get();
 
         return view('support_staff.case.running', compact(['cases']));
@@ -37,6 +39,7 @@ class CaseController extends Controller
         $cases = CityCase::whereCategoryId(auth()->user()->category_id)
                         ->whereSupportStaffId(auth()->user()->id)
                         ->whereStatus('completed')
+                        ->orderBy('ended_at', 'DESC')
                         ->get();
                         
         return view('support_staff.case.completed', compact(['cases']));
@@ -48,6 +51,7 @@ class CaseController extends Controller
         $cases = CityCase::whereCategoryId(auth()->user()->category_id)
                         ->whereSupportStaffId(auth()->user()->id)
                         ->whereStatus('canceled')
+                        ->orderBy('ended_at', 'DESC')
                         ->get();
 
         return view('support_staff.case.canceled', compact(['cases']));

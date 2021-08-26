@@ -51,7 +51,7 @@ class HomeController extends Controller
 
     public function case()
     {
-        $cases = CityCase::select(['id', 'title', 'status'])->whereStatus('completed')->get();
+        $cases = CityCase::select(['id', 'title', 'status'])->whereStatus('completed')->orderBy('ended_at', 'DESC')->get();
         return view('case', compact(['cases']));
     }
 
