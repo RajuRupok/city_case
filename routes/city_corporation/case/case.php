@@ -8,7 +8,6 @@ Route::group([
 ],
     function(){
         Route::get('/all', 'CaseController@index')->name('index');
-        Route::get('/all/filter', 'CaseController@filter')->name('filter');
         Route::get('/pending', 'CaseController@pending')->name('pending');
         Route::get('/running', 'CaseController@running')->name('running');
         Route::get('/completed', 'CaseController@completed')->name('completed');

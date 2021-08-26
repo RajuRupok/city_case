@@ -10,14 +10,7 @@ use App\Http\Controllers\Controller;
 
 class CaseController extends Controller
 {
-    public function index()
-    {
-        $cases = CityCase::with(['category'])->orderBy('id', 'DESC')->get();
-        $categories = Category::all();
-        return view('city_corporation.case.index', compact(['cases', 'categories']));
-    }
-    
-    public function filter(Request $request)
+    public function index(Request $request)
     {
         $categories = Category::all();
         $start = (is_null($request->start_date)) ? null: $request->start_date.' 00:00:00';
@@ -33,46 +26,46 @@ class CaseController extends Controller
             })
             ->when($start, function ($query, $start) {
                 return $query->where('created_at', '>=', $start);
-            })          
+            })
             ->when($end, function ($query, $end) {
                 return $query->where('created_at', '<=', $end);
-            })          
+            })
             ->orderBy('id', 'DESC')
             ->get();
 
         toast($cases->count().' Cases Found', 'success')->timerProgressBar();
-        return view('city_corporation.case.filter', compact(['cases', 'categories', 'request']));
+        return view('city_corporation.case.index', compact(['cases', 'categories', 'request']));
     }
-    
-    
+
+
     public function pending()
     {
         $cases = CityCase::with(['category'])->whereStatus('pending')->orderBy('id', 'DESC')->get();
         return view('city_corporation.case.pending', compact(['cases']));
     }
-    
-    
+
+
     public function running()
     {
         $cases = CityCase::with(['category'])->whereStatus('running')->orderBy('id', 'DESC')->get();
         return view('city_corporation.case.running', compact(['cases']));
     }
-    
-    
+
+
     public function completed()
     {
         $cases = CityCase::with(['category'])->whereStatus('completed')->orderBy('id', 'DESC')->get();
         return view('city_corporation.case.completed', compact(['cases']));
     }
-    
-    
+
+
     public function canceled()
     {
         $cases = CityCase::with(['category'])->whereStatus('canceled')->orderBy('id', 'DESC')->get();
         return view('city_corporation.case.canceled', compact(['cases']));
     }
-    
-    
+
+
     public function show($id)
     {
         $case = CityCase::with(['category', 'support_staff', 'citizen'])

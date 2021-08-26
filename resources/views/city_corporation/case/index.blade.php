@@ -35,59 +35,51 @@
     ============================< Main Section Starts >==========================
     ======================================================================== --}}
 
-
-    
-
-
     <div class="section-body">
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <form action="{{ route('city_corporation.case.filter') }}" method="get">
+            <form action="{{ route('city_corporation.case.index') }}" method="get" id="filter-case-form">
               {{-- @csrf --}}
               <div class="card-header">
                 <h4>Filter Cases</h4>
               </div>
-      
+
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-3">
                     <label>Category</label>
-                    <select class="form-control select2" name="category_id">
+                    <select class="form-control select2" name="category_id" id="case_category">
                       <option value="">Select Category</option>
                       @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}" @if ($request->category_id == $category->id) selected @endif>{{ $category->name }}</option>
                       @endforeach
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label>Status</label>
-                    <select class="form-control select2" name="status">
+                    <select class="form-control select2" name="status" id="case_status">
                       <option value="">Select Status</option>
-                      <option value="pending">{{ __('Pending') }}</option>
-                      <option value="running">{{ __('Running') }}</option>
-                      <option value="completed">{{ __('Completed') }}</option>
-                      <option value="canceled">{{ __('Canceled') }}</option>
+                      <option value="pending" @if ($request->status == 'pending') selected @endif>{{ __('Pending') }}</option>
+                      <option value="running" @if ($request->status == 'running') selected @endif>{{ __('Running') }}</option>
+                      <option value="completed" @if ($request->status == 'completed') selected @endif>{{ __('Completed') }}</option>
+                      <option value="canceled" @if ($request->status == 'canceled') selected @endif>{{ __('Canceled') }}</option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     <label>Date Range</label>
                     <div class="input-group">
-                      <input type="date" class="form-control datepicker-custom" name="start_date">
-                      <input type="date" class="form-control datepicker-custom" name="end_date">
+                      <input type="date" class="form-control datepicker-custom" id="case-date-start" name="start_date" value="{{ $request->start_date }}">
+                      <input type="date" class="form-control datepicker-custom" id="case-date-end" name="end_date" value="{{ $request->end_date }}">
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <div class="card-footer">
-                  <button class="btn btn-dark float-right m-b-15" type="submit">Filter Case</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-    
+
 
 
         <div class="row">
@@ -123,8 +115,8 @@
                                     {{ $case->title }}
                                 </td>
                                 <td>
-                                  @php 
-                                      $dd = new DateTime($case->created_at); 
+                                  @php
+                                      $dd = new DateTime($case->created_at);
                                       $date = $dd->format('d-m-Y');
                                   @endphp
                                   {{ $date }}
@@ -171,11 +163,29 @@
     <script>
         // Custom Script Here
         $(document).ready(function() {
-          // Table Row Link
-          $('*[data-href]').click(function(){
-              window.location = $(this).data('href');
-              return false;
-          });
+            // Table Row Link
+            $('*[data-href]').click(function(){
+                window.location = $(this).data('href');
+                return false;
+            });
+
+            var $caseCategory = $("#case_category");
+            $caseCategory.select2();
+            $caseCategory.on("change", function (e) {
+                $('#filter-case-form').submit();
+            });
+            var $caseStatus = $("#case_status");
+            $caseStatus.select2();
+            $caseStatus.on("change", function (e) {
+                $('#filter-case-form').submit();
+            });
+
+            $("#case-date-start").change(function(){
+                $('#filter-case-form').submit();
+            });
+            $("#case-date-end").change(function(){
+                $('#filter-case-form').submit();
+            });
       });
 
     </script>
