@@ -13,6 +13,15 @@
     {{--  External CSS  --}}
     <style>
     /* Custom CSS Here */
+    *[data-href] {
+        cursor: pointer !important;
+        border-bottom: 1px solid #efefef !important;
+        transition: 0.3s all ease-in-out;
+    }
+    *[data-href]:hover {
+      background-color: #efefefef;
+      transition: 0.3s all ease-in-out;
+    }
     </style>
 @endsection
 
@@ -92,7 +101,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="table-1">
+                  <table class="table table-bordered" id="tableExport">
                     <thead>
                       <tr>
                         <th class="text-center">Sl.</th>
@@ -101,33 +110,29 @@
                         <th>Title</th>
                         <th>Created At</th>
                         <th>Status</th>
-                        <th>Action</th>
                       </tr>
                     </thead>
                       <tbody>
                           @foreach ($cases as $sl => $case)
-                            <tr>
-                                <td class="text-center">{{ $sl+1 }}</td>
-                                <td>
-                                    {{ $case->ticket }}
-                                </td>
-                                <td>
-                                    {{ optional($case->category)->name }}
-                                </td>
-                                <td>
-                                    {{ $case->title }}
-                                </td>
-                                <td>
-                                  @php 
-                                      $dd = new DateTime($case->created_at); 
-                                      $date = $dd->format('d-m-Y');
-                                  @endphp
-                                  {{ $date }}
-                                </td>
-                                <td class="text-uppercase text-bold" style="font-weight: 900;">{{ $case->status }}</td>
-                                <td>
-                                    <a href="{{ route('city_corporation.case.show', ['id' => $case->id]) }}" class="btn btn-dark btn-sm">Details</a>
-                                </td>
+                            <tr data-href="{{ route('city_corporation.case.show', ['id' => $case->id]) }}">
+                              <td class="text-center">{{ $sl+1 }}</td>
+                              <td>
+                                  {{ $case->ticket }}
+                              </td>
+                              <td>
+                                  {{ optional($case->category)->name }}
+                              </td>
+                              <td>
+                                  {{ $case->title }}
+                              </td>
+                              <td>
+                                @php 
+                                    $dd = new DateTime($case->created_at); 
+                                    $date = $dd->format('d-m-Y');
+                                @endphp
+                                {{ $date }}
+                              </td>
+                              <td class="text-uppercase text-bold" style="font-weight: 900;">{{ $case->status }}</td>
                             </tr>
                           @endforeach
                       </tbody>
@@ -151,15 +156,27 @@
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/bundles/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <!-- Page Specific JS File -->
+    <script src="{{ asset('backend/assets/bundles/datatables/export-tables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/bundles/datatables/export-tables/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/bundles/datatables/export-tables/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/bundles/datatables/export-tables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/bundles/datatables/export-tables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('backend/assets/bundles/datatables/export-tables/buttons.print.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/page/datatables.js') }}"></script>
+
     <script src="{{ asset('backend/assets/bundles/select2/dist/js/select2.full.min.js') }}"></script>
 @endsection
 
 @section('custom_script')
     {{--  External Custom Javascript  --}}
     <script>
-        // Custom Script Here
+      // Custom Script Here
+      $(document).ready(function() {
+        // Table Row Link
+        $('*[data-href]').click(function(){
+            window.location = $(this).data('href');
+            return false;
+        });
+      });
     </script>
 @endsection

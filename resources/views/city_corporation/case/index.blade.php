@@ -13,6 +13,15 @@
     {{--  External CSS  --}}
     <style>
     /* Custom CSS Here */
+    *[data-href] {
+        cursor: pointer !important;
+        border-bottom: 1px solid #efefef !important;
+        transition: 0.3s all ease-in-out;
+    }
+    *[data-href]:hover {
+      background-color: #efefefef;
+      transition: 0.3s all ease-in-out;
+    }
     </style>
 @endsection
 
@@ -89,21 +98,20 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-striped"  id="tableExport">
+                  <table class="table table-bordered" id="tableExport">
                     <thead>
                       <tr>
-                        <th class="text-center">Sl.</th>
-                        <th>Ticket</th>
-                        <th>Category</th>
-                        <th>Title</th>
-                        <th>Created At</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th scope="col" class="text-center">Sl.</th>
+                        <th scope="col">Ticket</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Status</th>
                       </tr>
                     </thead>
                       <tbody>
                           @foreach ($cases as $sl => $case)
-                            <tr>
+                            <tr data-href="{{ route('city_corporation.case.show', ['id' => $case->id]) }}">
                                 <td class="text-center">{{ $sl+1 }}</td>
                                 <td>
                                     {{ $case->ticket }}
@@ -122,9 +130,9 @@
                                   {{ $date }}
                                 </td>
                                 <td class="text-uppercase text-bold" style="font-weight: 900;">{{ $case->status }}</td>
-                                <td>
+                                {{-- <td>
                                     <a href="{{ route('city_corporation.case.show', ['id' => $case->id]) }}" class="btn btn-dark btn-sm">Details</a>
-                                </td>
+                                </td> --}}
                             </tr>
                           @endforeach
                       </tbody>
@@ -162,5 +170,13 @@
     {{--  External Custom Javascript  --}}
     <script>
         // Custom Script Here
+        $(document).ready(function() {
+          // Table Row Link
+          $('*[data-href]').click(function(){
+              window.location = $(this).data('href');
+              return false;
+          });
+      });
+
     </script>
 @endsection
