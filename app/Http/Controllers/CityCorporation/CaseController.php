@@ -14,7 +14,7 @@ class CaseController extends Controller
     {
         $categories = Category::all();
         $start = (is_null($request->start_date)) ? null: $request->start_date.' 00:00:00';
-        $end = (is_null($request->end_date)) ? null: $request->end_date.' 00:00:00';
+        $end = (is_null($request->end_date)) ? null: $request->end_date.' 23:59:59';
         $category_id = $request->category_id;
         $status = $request->status;
         $cases = CityCase::with(['category'])
