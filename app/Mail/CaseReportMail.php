@@ -26,7 +26,7 @@ class CaseReportMail extends Mailable
         $address = config('mail.from.address');
         $app_name = config('mail.from.name');
         $subject = 'Case Completion Report';
-        // dd($data, $data->citizen->name);
+        // dd($data, $data->citizen->name, $address, $app_name);
         
         return $this->view('mails.case_report', compact(['data']))
             ->subject($subject)

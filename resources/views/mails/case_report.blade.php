@@ -27,7 +27,7 @@
             <tr>
                 <td>
                     <table style="background-color: #f2f3f8; max-width: 670px; margin: 0 auto;" width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-                        <tr>
+                        {{-- <tr>
                             <td style="height:80px;">&nbsp;</td>
                         </tr>
                         <!-- Logo -->
@@ -37,7 +37,7 @@
                                   <img width="250" src="{{ $message->embed(asset('frontend/assets/img/CCM_Logo.svg')) }}" title="logo" alt="logo">
                                 </a>
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <td style="height:20px;">&nbsp;</td>
                         </tr>
